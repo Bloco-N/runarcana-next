@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Button from "../../components/Button";
 import Card from "../../components/Card";
 import Input from "../../components/Input";
+import { useForm } from "react-hook-form";
+import SignUpSubmit from "../../types/SignUpSubmit";
 
 const Container = styled.div`
   height: 100%;
@@ -27,16 +29,20 @@ const Container = styled.div`
 `
 
 export default function SignUp() {
+  const { register, handleSubmit } = useForm<SignUpSubmit>()
+  const onSubmit = (data:SignUpSubmit) => {
+    console.log(data)
+  }
   return (
     <Container>
       <Card>
-        <h2>Crie seu codex id</h2>
-        <form >
-          <Input placeholder="Invocador" />
-          <Input placeholder="Apelido" />
-          <Input placeholder="Senha" type="password" />
+        <h2>Crie seu codex</h2>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Input {...register('username', {required: true})} placeholder="Invocador" />
+          <Input {...register('nickname', {required: true})} placeholder="Apelido" />
+          <Input {...register('password', {required: true})} placeholder="Senha" type="password" />
           <Button>Cadastro</Button>
-          <p>Já possui um id? Acesse o codex <Link href='/sign-in'>aqui</Link></p>  
+          <p>Já possui um codex?  <Link href='/sign-in'>Acesse o codex aqui</Link></p>  
         </form>
       </Card>
     </Container>
