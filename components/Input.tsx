@@ -17,10 +17,9 @@ const Container = styled.input`
   }
 `
 
-const Input = (props: InputProps) => {
-  return (
-    <Container {...props} />
-  );
-};
+const Input = React.forwardRef<HTMLInputElement, InputProps>((props: InputProps, ref) => {
+  return <Container ref={ref} {...props} />
+}) 
+Input.displayName = 'Input'
 
 export default Input;
