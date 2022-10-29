@@ -1,26 +1,69 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
 
-a {
-  color: inherit;
-  text-decoration: none;
+:root {
+  color-scheme: light dark;
+  font-size: 65.2%;
+
 }
 
 * {
   box-sizing: border-box;
 }
 
+html,
+body {
+  font-family: 'IM Fell English SC', serif;
+  font-size: 2rem;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.5;
+  transition: 0.5s;
+}
+
+a:hover {
+  opacity: 1;
+  text-shadow:
+    0 0 7px var(--primary),
+    0 0 10px var(--primary),
+    0 0 21px var(--primary),
+    0 0 42px white,
+    0 0 82px white,
+    0 0 92px white,
+    0 0 102px white,
+    0 0 151px white;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+  :root {
+    --primary: #000918;
+    --secondary: #93a2bf;
   }
+
   body {
-    color: white;
-    background: black;
+    color: var(--secondary);
+    background: var(--primary);
+    background-size: cover;
+  }
+}
+
+@media(prefers-color-scheme: light) {
+  :root {
+    --primary: #f5cff0;
+    --secondary: #2c0e1f;
+  }
+
+  body {
+    color: var(--secondary);
+    background: var(--primary);
   }
 }
