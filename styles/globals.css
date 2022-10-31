@@ -47,6 +47,7 @@ a:hover {
   :root {
     --primary: #000918;
     --secondary: #93a2bf;
+    --error: #e6b4b4;
   }
 
   body {
@@ -60,10 +61,25 @@ a:hover {
   :root {
     --primary: #f5cff0;
     --secondary: #2c0e1f;
+    --error: #ff3434;
   }
 
   body {
     color: var(--secondary);
     background: var(--primary);
+  }
+}
+
+@keyframes lds-default {
+
+  0%,
+  20%,
+  80%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.5);
   }
 }
