@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import codexIcone from '../public/codex-icone.svg'
-import codexIconeLight from '../public/codex-icone-light.svg'
+import codexIcon from '../public/codex-icone.svg'
+import codexIconLight from '../public/codex-icone-light.svg'
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -54,7 +54,7 @@ const Nav = () => {
   }
   return (
     <Container>
-      <Image src={isDark? codexIcone : codexIconeLight} alt="codex icone"/>
+      <Image src={isDark? codexIcon : codexIconLight} alt="codex icone"/>
       <Link href='/'>
         home  
       </Link>
