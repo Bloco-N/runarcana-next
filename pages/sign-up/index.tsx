@@ -5,6 +5,12 @@ import Card from "../../components/Card";
 import Input from "../../components/Input";
 import { useForm } from "react-hook-form";
 import SignUpSubmit from "../../types/SignUpSubmit";
+import { useMutation } from '@apollo/client';
+import { SIGN_UP } from "../../gql/mutations";
+import { useEffect } from "react";
+import ErrorModal from "../../components/ErrorModal";
+import { useRouter } from "next/router";
+import Loading from "../../components/Loading";
 
 const Container = styled.div`
   height: 100%;
@@ -29,12 +35,21 @@ const Container = styled.div`
 `
 
 export default function SignUp() {
+  const router = useRouter()
   const { register, handleSubmit } = useForm<SignUpSubmit>()
-  const onSubmit = (data:SignUpSubmit) => {
-    console.log(data)
-  }
+  const [mutateFunction, { data, loading, error }] = useMutation(SIGN_UP, {errorPolicy:'all'})
+  const onSubmit = (data:SignUpSubmit) => { mutateFunction({variables:{data}})}
+
+  useEffect(() => {
+    if(data){
+      router.push('/sign-in')
+    }
+  }, [data, router])
+
   return (
     <Container>
+      { error ? <ErrorModal message={error.message}/> : ''}
+      { loading ? <Loading/> : ''}
       <Card>
         <h2>Crie seu codex</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
