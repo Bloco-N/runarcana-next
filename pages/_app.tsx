@@ -1,10 +1,13 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Layout from '../components/Layout'
-import { useCallback, useEffect, useState } from "react";
+import { useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import useDarkTheme from '../hooks/useDarkTheme';
+import RenderWhenMounted from '../components/RenderWhenMounted';
+import { ApolloProvider } from "@apollo/client";
+import client from '../utils/apolloClient'
 
 export default function App({ Component, pageProps }: AppProps) {
   const isActive = useDarkTheme()
@@ -21,85 +24,89 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-    <Particles
-    id="tsparticles"
-    init={particlesInit}
-    loaded={particlesLoaded}
-    options={{
-      background: {
-        color: {
-          value: isActive ?"#000918" : '#f5cff0',
-          },
-        },
-        fpsLimit: 120,
-        interactivity: {
-          events: {
-            onClick: {
-              enable: false,
-              mode: "push",
-            },
-            onHover: {
-              enable: false,
-              mode: "repulse",
-            },
-            resize: true,
-          },
-          modes: {
-            push: {
-              quantity: 4,
-            },
-            repulse: {
-              distance: 200,
-              duration: 0.4,
-            },
-          },
-        },
-        particles: {
+      <Particles
+      id="tsparticles"
+      init={particlesInit}
+      loaded={particlesLoaded}
+      options={{
+        background: {
           color: {
-            value: isActive ?"#93a2bf" : '#2c0e1f',
-          },
-          links: {
-            color: isActive ?"#93a2bf" : '#2c0e1f',
-            distance: 300,
-            enable: true,
-            opacity: 0.5,
-            width: 1,
-          },
-          collisions: {
-            enable: true,
-          },
-          move: {
-            enable: true,
-            outModes: {
-              default: "bounce",
+            value: isActive ?"#000918" : '#f5cff0',
             },
-            random: false,
-            speed: 3,
-            straight: false,
           },
-          number: {
-            density: {
+          fpsLimit: 120,
+          interactivity: {
+            events: {
+              onClick: {
+                enable: true,
+                mode: "repulse",
+              },
+              onHover: {
+                enable: false,
+                mode: "repulse",
+              },
+              resize: true,
+            },
+            modes: {
+              push: {
+                quantity: 4,
+              },
+              repulse: {
+                distance: 200,
+                duration: 0.4,
+              },
+            },
+          },
+          particles: {
+            color: {
+              value: isActive ?"#93a2bf" : '#2c0e1f',
+            },
+            links: {
+              color: isActive ?"#93a2bf" : '#2c0e1f',
+              distance: 300,
               enable: true,
-              area: 1000,
+              opacity: 0.5,
+              width: 1,
             },
-            value: 20,
+            collisions: {
+              enable: true,
+            },
+            move: {
+              enable: true,
+              outModes: {
+                default: "bounce",
+              },
+              random: false,
+              speed: 3,
+              straight: false,
+            },
+            number: {
+              density: {
+                enable: true,
+                area: 1000,
+              },
+              value: 20,
+            },
+            opacity: {
+              value: 1,
+            },
+            shape: {
+              type: "circle",
+            },
+            size: {
+              value: { min: 1, max: 3 },
+            },
           },
-          opacity: {
-            value: 1,
-          },
-          shape: {
-            type: "circle",
-          },
-          size: {
-            value: { min: 1, max: 3 },
-          },
-        },
-        detectRetina: true,
-      }}
-    />
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-      </>
+          detectRetina: true,
+        }}
+      />
+      <ApolloProvider client={client}>
+        <RenderWhenMounted>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </RenderWhenMounted>
+      </ApolloProvider>
+    </>
   )
 }
