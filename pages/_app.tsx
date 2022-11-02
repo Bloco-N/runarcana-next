@@ -31,7 +31,7 @@ export default function App({ Component, pageProps }: AppProps) {
       options={{
         background: {
           color: {
-            value: isActive ?"#000918" : '#f5cff0',
+            value: isActive ?"#000000" : '#e2e2e2',
             },
           },
           fpsLimit: 120,
