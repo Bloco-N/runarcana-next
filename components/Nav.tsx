@@ -21,10 +21,12 @@ const Container = styled.nav`
     top: 50%;
     left: 50%;
     height: auto;
-    width: 90rem;
+    width: 70rem;
+    animation: grow-up 1s forwards;
   }
   button{
     all: unset;
+    margin-left: auto;
     opacity: 0.5;
     transition: 0.5s;
     cursor: pointer;
@@ -56,21 +58,21 @@ const Nav = () => {
     <Container>
       <Image src={isDark? codexIcon : codexIconLight} alt="codex icone"/>
       <Link href='/'>
-        home  
+        Home  
       </Link>
       <Link href='/about'>
-        about 
+        About 
       </Link>
       {user ? (
         <button onClick={handleSignOut}>
-          sign-out
+          Sign-out
         </button>
       ):(
       <Link href='/sign-in'>
-        sign-in  
+        Sign-in  
       </Link>
       )}
-
+      {user ? <span>{user.username} ({user.nickname})</span>: ''}
     </Container>
   );
 };
