@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import useDarkTheme from '../hooks/useDarkTheme';
 
 type CardProps = {
-  children: React.ReactNode
+  children: React.ReactNode,
+  className?:string
 }
 
 type ContainerProps = {
@@ -11,16 +12,17 @@ type ContainerProps = {
 }
 
 const Container = styled.div<ContainerProps>`
-  background: ${props => props.isDark ? 'rgba(0, 9, 24, 0.25)' :'rgba(245, 207, 240, 0.25)' } ;
+  background: ${props => props.isDark ? 'rgba(0, 9, 24, 0.25)' :'rgba(255, 255, 255, 0.25)' } ;
   backdrop-filter: blur(0.2rem);
-  border: 0.4rem inset ${props => props.isDark ? 'rgba(40, 52, 73, 0.7)' :'rgba(208, 167, 202, 0.25)' };
+  border: 0.4rem inset ${props => props.isDark ? 'rgba(40, 52, 73, 0.7)' :'rgba(255, 255, 255, 0.25)' };
   padding: 5rem;
+  border-radius: 1rem;
 `
 
 const Card = (props: CardProps) => {
   const isDark = useDarkTheme()
   return (
-    <Container isDark={isDark}>
+    <Container isDark={isDark} {...props}>
       {props.children}
     </Container>
   );
