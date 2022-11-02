@@ -13,9 +13,10 @@ type ContainerProps = {
 const Container = styled.button<ContainerProps>`
   all: unset;
   padding: 1.5rem;
-  background: ${props => props.isDark ? 'rgba(0, 9, 24, 0.25)' :'rgba(245, 207, 240, 0.25)' } ;
+  background: ${props => props.isDark ? 'rgba(0, 9, 24, 0.25)' :'rgba(255, 255, 255, 0.25)' } ;
   backdrop-filter: blur(0.2rem);
-  border: 0.4rem outset ${props => props.isDark ? 'rgba(40, 52, 73, 0.7)' :'rgba(236, 111, 220, 0.25)' };
+  border: 0.4rem outset ${props => props.isDark ? 'rgba(40, 52, 73, 0.7)' :'rgba(141, 133, 133, 0.25)' };
+  border-radius: 1rem;
   opacity: 0.4;
   font-size: 2rem;
   font-weight: bold;
