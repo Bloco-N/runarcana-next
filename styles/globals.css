@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
 
+
 :root {
   color-scheme: light dark;
-  font-size: 65.2%;
+  font-size: 62.5%;
 
 }
 
@@ -16,6 +17,13 @@ body {
   font-size: 2rem;
   padding: 0;
   margin: 0;
+}
+
+span {
+  background: var(--secondary);
+  color: var(--primary);
+  padding: 1rem;
+  border-radius: 1rem;
 }
 
 a {
@@ -59,7 +67,7 @@ a:hover {
 
 @media(prefers-color-scheme: light) {
   :root {
-    --primary: #f5cff0;
+    --primary: #fff;
     --secondary: #2c0e1f;
     --error: #ff3434;
   }
@@ -82,4 +90,19 @@ a:hover {
   50% {
     transform: scale(1.5);
   }
+}
+
+@keyframes grow-up {
+
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+.grow-up {
+  animation: grow-up 1s forwards;
 }
