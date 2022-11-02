@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   position: fixed;
-  bottom: 12rem;
+  bottom: 4%;
   padding: 4rem;
   color: var(--error);
 `
