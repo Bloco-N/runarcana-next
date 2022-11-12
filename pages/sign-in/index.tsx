@@ -14,7 +14,7 @@ import ErrorModal from "../../components/ErrorModal"
 import Loading from "../../components/Loading"
 
 const Container = styled.div`
-  height: 100%;
+  height: 80%;
   display: flex;
   align-items: center;
   justify-content: center;

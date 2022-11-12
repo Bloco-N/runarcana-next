@@ -9,10 +9,9 @@ import useUser from '../hooks/useUser';
 import useDarkTheme from '../hooks/useDarkTheme';
 
 const Container = styled.nav`
-  position: fixed;
   display: flex;
   align-items: center;
-  height: 6rem;
+  height: 10%;
   gap: 3rem;
   padding: 4rem;
   width: 100%;
@@ -56,7 +55,7 @@ const Nav = () => {
   }
   return (
     <Container>
-      <Image src={isDark? codexIcon : codexIconLight} alt="codex icone"/>
+      {/* <Image src={isDark? codexIcon : codexIconLight} alt="codex icone"/> */}
       <Link href='/'>
         Home  
       </Link>
