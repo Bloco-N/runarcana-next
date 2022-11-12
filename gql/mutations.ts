@@ -21,7 +21,25 @@ const SIGN_IN = gql`
   }
 `
 
+const CREATE_CHARACTER = gql`
+  mutation Mutation($data: CharacterCreateInputData!) {
+    createCharacter(data: $data) {
+      message
+    }
+  }
+`
+
+const DELETE_CHARACTER = gql`
+  mutation DeleteCharacter($deleteCharacterId: Float!) {
+  deleteCharacter(id: $deleteCharacterId) {
+    message
+  }
+}
+`
+
 export {
   SIGN_UP,
-  SIGN_IN
+  SIGN_IN,
+  CREATE_CHARACTER,
+  DELETE_CHARACTER
 }
