@@ -4,6 +4,8 @@ import styled from 'styled-components';
 type InputProps = {
   placeholder: string,
   type?: string
+  onFocus?: React.FocusEventHandler
+  onChange?: React.ChangeEventHandler
 }
 
 const Container = styled.input`
