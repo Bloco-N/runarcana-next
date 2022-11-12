@@ -4,7 +4,7 @@
 :root {
   color-scheme: light dark;
   font-size: 62.5%;
-
+  scroll-behavior: smooth;
 }
 
 * {
@@ -24,6 +24,12 @@ span {
   color: var(--primary);
   padding: 1rem;
   border-radius: 1rem;
+}
+
+h2 {
+  opacity: 0.7;
+  font-weight: 100;
+  font-size: 2.5rem;
 }
 
 a {
@@ -46,7 +52,9 @@ a:hover {
     0 0 151px white;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
 }
@@ -105,4 +113,31 @@ a:hover {
 
 .grow-up {
   animation: grow-up 1s forwards;
+}
+
+.map-grow {
+  opacity: 1 !important;
+  transform: scale(1.1);
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: 1rem;
+  scrollbar-color: var(--secondary) transparent;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 1rem;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 1rem;
+  border: 1rem solid transparent;
 }
