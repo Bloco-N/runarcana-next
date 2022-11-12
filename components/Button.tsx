@@ -4,6 +4,8 @@ import useDarkTheme from '../hooks/useDarkTheme';
 
 type ButtonProps = {
   children: React.ReactNode
+  onClick?: React.MouseEventHandler
+  className?: string
 }
 
 type ContainerProps = {
@@ -22,6 +24,7 @@ const Container = styled.button<ContainerProps>`
   font-weight: bold;
   cursor: pointer;
   transition: 0.5s;
+  user-select: none;
   :hover{
     opacity: 1;
   }
