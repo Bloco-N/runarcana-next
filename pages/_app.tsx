@@ -1,16 +1,19 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Layout from '../components/Layout'
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import useDarkTheme from '../hooks/useDarkTheme';
 import RenderWhenMounted from '../components/RenderWhenMounted';
 import { ApolloProvider } from "@apollo/client";
 import client from '../utils/apolloClient'
+import Loading from '../components/Loading';
+import LoadingContext from '../contexts/LoadingContext';
 
 export default function App({ Component, pageProps }: AppProps) {
   const isActive = useDarkTheme()
+  const [loadingLayout, setLoading] = useState(false)
 
   const particlesInit = useCallback(async (engine:any) => {
     console.log(engine);
@@ -77,13 +80,13 @@ export default function App({ Component, pageProps }: AppProps) {
                 default: "bounce",
               },
               random: false,
-              speed: 3,
+              speed: 2,
               straight: false,
             },
             number: {
               density: {
                 enable: true,
-                area: 1000,
+                area: 1500,
               },
               value: 20,
             },
@@ -94,7 +97,7 @@ export default function App({ Component, pageProps }: AppProps) {
               type: "circle",
             },
             size: {
-              value: { min: 1, max: 3 },
+              value: { min: 1, max: 1.3 },
             },
           },
           detectRetina: true,
@@ -103,7 +106,10 @@ export default function App({ Component, pageProps }: AppProps) {
       <ApolloProvider client={client}>
         <RenderWhenMounted>
           <Layout>
-            <Component {...pageProps} />
+            <LoadingContext.Provider value={[loadingLayout, setLoading]}>
+              {loadingLayout ? <Loading/> : ''}
+              <Component {...pageProps} />
+            </LoadingContext.Provider>
           </Layout>
         </RenderWhenMounted>
       </ApolloProvider>
