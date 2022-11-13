@@ -4,7 +4,7 @@ import Card from "../../components/Card"
 import RegionInput from '../../components/RegionInput';
 import OriginInput from '../../components/OriginInput';
 import InputsWrapper from '../../components/InputsWrapper';
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import RunarcanaClassInput from "../../components/RunarcanaClassInput";
 import PastInput from "../../components/PastInput";
 import MoralInput from "../../components/MoralInput";
@@ -13,6 +13,8 @@ import CreateCharacterSubmit from "../../types/CreateCharacterSubmit";
 import CharacterSubmitContext from "../../contexts/CharacterSubmitContext";
 import { CREATE_CHARACTER } from "../../gql/mutations";
 import { useRouter } from 'next/router';
+import LoadingContext from '../../contexts/LoadingContext';
+import LoadingContextType from '../../types/LoadingContextType';
 
 const Container = styled.div`
   height: 80%;
@@ -267,8 +269,9 @@ const Container = styled.div`
   }
 `
 export default function CreateCharacter(){
+  const [, setLoading]  = useContext(LoadingContext) as LoadingContextType
   const router = useRouter()
-  const [mutateFunction] = useMutation(CREATE_CHARACTER, {errorPolicy:'all'})
+  const [mutateFunction, {loading}] = useMutation(CREATE_CHARACTER, {errorPolicy:'all'})
   const inputs = [RegionInput, OriginInput, RunarcanaClassInput, PastInput, MoralInput, CharacterNameInput]
   const [currentInput, setCurrentInput] = useState(0)
   const [characterSubmit, setCharacterSubmit] = useState<CreateCharacterSubmit>({
@@ -300,6 +303,10 @@ export default function CreateCharacter(){
     if(currentInput === 0) return
     setCurrentInput(currentInput - 1)
   }
+
+  useEffect(() => {
+    setLoading(loading)
+  }, [loading, setLoading])
 
   return(
     <Container>
