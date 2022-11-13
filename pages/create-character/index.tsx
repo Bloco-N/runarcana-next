@@ -1,6 +1,5 @@
 import { useMutation } from '@apollo/client';
 import styled from "styled-components"
-import Card from "../../components/Card"
 import RegionInput from '../../components/RegionInput';
 import OriginInput from '../../components/OriginInput';
 import InputsWrapper from '../../components/InputsWrapper';
@@ -21,63 +20,8 @@ const Container = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  .none{
-    display: none;
-  }
-  .block{
-    display: block;
-  }
-  .bandopolis-index{
-    font-size: 20rem;
-    position: absolute;
-    right: 20%;
-    top: 20%;
-  }
-  .name-field{
-    padding-top: 5rem;
-  }
-  .details-card{
-    position: absolute;
-    width: 50rem;
-    top: 30%;
-    left: 60%;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    p{
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-  }
-  span.next{
-    cursor: pointer;
-    position: absolute;
-    bottom: 2%;
-    right: 2%;
-    opacity: 0.5;
-    transition: 0.5s;
-    :hover{
-      opacity: 1;
-    }
-  }
-  span{
-    user-select: none;
-  }
-  span.prev{
-    cursor: pointer;
-    position: absolute;
-    bottom: 2%;
-    left: 2%;
-    opacity: 0.5;
-    transition: 0.5s;
-    :hover{
-      opacity: 1;
-    }
-  }
   .c-container{
-    height: 100%;
+    height: 55rem;
     width: 80%;
     .c-selection{
       height: 30rem;
@@ -143,6 +87,12 @@ const Container = styled.div`
       opacity: 0.5;
       transition: 0.5s;
       z-index: -1;
+    }
+    .bandopolis-index{
+      font-size: 20rem;
+      position: absolute;
+      right: 20%;
+      top: 30%;
     }
     .origin{
       height: 8rem;
@@ -211,42 +161,34 @@ const Container = styled.div`
     }
     .class-details{
       position: absolute;
-      background-color: var(--primary);
-      top:45%;
-      right: 4rem;
-      height: 12rem;
-      width: 50rem;
+
+      top:20%;
+      right: 15%;
       padding: 2rem;
+      width: 30rem;
       border-radius: 1rem;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      &.two{
-        height: 18rem;
-        top: 10%;
-        width: 50rem;
+      gap: 3rem;
+      .class-details-top{
+        width: 30rem;
+        position: relative;
+        top:1rem;
+        background-color: var(--primary);
+        padding: 2rem;
+        border-radius: 1rem;
       }
-      div{
-        margin: 0;
+      .class-details-bottom{
+        width: 30rem;
+        background-color: var(--primary);
+        padding: 2rem;
+        border-radius: 1rem;
         display: flex;
-        align-items: center;
-        width: 100%;
-        height: 5rem;
+        flex-direction: column;
         gap: 2rem;
-        div{
-          display: flex;
-          flex-direction: column;
-          align-items:center;
-          justify-content: center
-        }
         p{
-          height: 10rem;
-          padding: 1rem;
-          border-radius: 1rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-color: var(--secondary);
-          color: var(--primary);
+          margin-left: 2rem;
         }
       }
       p{
@@ -267,6 +209,56 @@ const Container = styled.div`
       width: 50%;
     }
   }
+  .none{
+    display: none;
+  }
+  .block{
+    display: block;
+  }
+  .name-field{
+    padding-top: 5rem;
+  }
+  .details-card{
+    position: absolute;
+    width: 50rem;
+    top: 30%;
+    left: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    p{
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+  span{
+    user-select: none;
+  }
+  span.next{
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    opacity: 0.5;
+    transition: 0.5s;
+    :hover{
+      opacity: 1;
+    }
+  }
+  span.prev{
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+    transition: 0.5s;
+    :hover{
+      opacity: 1;
+    }
+  }
+
 `
 export default function CreateCharacter(){
   const [, setLoading]  = useContext(LoadingContext) as LoadingContextType
@@ -310,7 +302,7 @@ export default function CreateCharacter(){
 
   return(
     <Container>
-      <Card className="grow-up c-container">
+      <div className="grow-up c-container">
         <h1>Inserindo dados no codex</h1>
         <CharacterSubmitContext.Provider value={[characterSubmit, setCharacterSubmit]}>
           <InputsWrapper currentInput={currentInput}/>
@@ -318,7 +310,7 @@ export default function CreateCharacter(){
           <span className='next' onClick={handleNext}>próximo</span>
         </CharacterSubmitContext.Provider>
         
-      </Card>
+      </div>
     </Container>
   )
 }

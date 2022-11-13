@@ -54,20 +54,22 @@ const RunarcanaClassInput = () => {
           ))}
         </select>
         <Button onClick={rightHandle}>➤</Button>
-        <div className="class-details">
-          <p>{data?.listAllRClasses.runarcanaClasses[Number(characterSubmit.runarcanaClassId) - 1].description}</p>
-        </div>
-        <div className="class-details two">
-          <div>
-            <div>
-            Salvaguardas: 
-            <p>{data?.listAllRClasses.runarcanaClasses[Number(characterSubmit.runarcanaClassId) - 1].savingThrows}</p>
-            </div>
-            <div>
-              Habilidades Primarias:
-              <p>{data?.listAllRClasses.runarcanaClasses[Number(characterSubmit.runarcanaClassId) - 1].primaryAbility}</p>
-            </div>
+        <div className='class-details'>
+          <div className='class-details-top'>
+            <p>{data?.listAllRClasses.runarcanaClasses[Number(characterSubmit.runarcanaClassId) - 1].description}</p>
           </div>
+          <div>
+            <div className='class-details-bottom'>
+              <div>
+              Salvaguardas: 
+              <p>{data?.listAllRClasses.runarcanaClasses[Number(characterSubmit.runarcanaClassId) - 1].savingThrows}</p>
+              </div>
+              <div>
+                Habilidades Primarias:
+                <p>{data?.listAllRClasses.runarcanaClasses[Number(characterSubmit.runarcanaClassId) - 1].primaryAbility}</p>
+              </div>
+            </div>
+        </div>
         </div>
       </section>  
     </>

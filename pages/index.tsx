@@ -20,8 +20,9 @@ const Container = styled.div`
   flex-direction: column;
   height: 80%;
   width: 100%;
-  padding-left: 10rem;
-
+  h1, h2, .c-characters{
+    margin-left: 10rem;
+  }
   h1{
     font-size:  5rem;
     margin-bottom: 2rem;
@@ -95,8 +96,6 @@ export default function Home() {
   if(user){
       return (
         <Container>
-          <main>
-
           {modalOpen ? <ConfirmExcludeCharacterModal characterId={characterId} setIsOpen={setModalOpen}/> : ''}
           <h1>Bem vindo Invocador</h1>
           <h2>Personagens</h2>
@@ -109,7 +108,7 @@ export default function Home() {
               )) : ''}
               <Button onClick={handleCreateCharacter}>+</Button>
           </div>
-          </main>
+
 
 
         </Container>

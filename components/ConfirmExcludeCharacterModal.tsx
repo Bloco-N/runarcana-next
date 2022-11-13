@@ -18,8 +18,8 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80%;
   height: 80%;
+  width: 100%;
   .content{
     display: flex;
     flex-direction: column;
