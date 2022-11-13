@@ -16,14 +16,22 @@ const RunarcanaClassInput = () => {
   })
   const leftHandle = () => {
     const select = document.querySelector('select') as HTMLSelectElement
-    if(select.value === '1') return
+    if(select.value === '1') {
+      select.value = '11'
+      setCharacterSubmit({...characterSubmit, runarcanaClassId: Number(select.value)})
+      return
+    }  
     select.value = String(Number(select.value) - 1)
     setCharacterSubmit({...characterSubmit, runarcanaClassId: Number(select.value)})
   }
 
   const rightHandle = () => {
     const select = document.querySelector('select') as HTMLSelectElement
-    if(select.value === '11') return
+    if(select.value === '11') {
+      select.value = '1'
+      setCharacterSubmit({...characterSubmit, runarcanaClassId: Number(select.value)})
+      return
+    }
     select.value = String(Number(select.value) + 1)
     setCharacterSubmit({...characterSubmit, runarcanaClassId: Number(select.value)})
   }

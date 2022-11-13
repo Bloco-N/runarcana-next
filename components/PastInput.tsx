@@ -16,14 +16,22 @@ const PastInput = () => {
   })
   const leftHandle = () => {
     const select = document.querySelector('select') as HTMLSelectElement
-    if(select.value === '1') return
+    if(select.value === '1') {
+      select.value = '22'
+      setCharacterSubmit({...characterSubmit, pastId: Number(select.value)})
+      return
+    }
     select.value = String(Number(select.value) - 1)
     setCharacterSubmit({...characterSubmit, pastId: Number(select.value)})
   }
 
   const rightHandle = () => {
     const select = document.querySelector('select') as HTMLSelectElement
-    if(select.value === '22') return
+    if(select.value === '22') {
+      select.value = '1'
+      setCharacterSubmit({...characterSubmit, pastId: Number(select.value)})
+      return
+    }
     select.value = String(Number(select.value) + 1)
     setCharacterSubmit({...characterSubmit, pastId: Number(select.value)})
   }

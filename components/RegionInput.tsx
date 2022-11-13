@@ -41,14 +41,22 @@ const RegionInput = () => {
   })
   const leftHandle = () => {
     const select = document.querySelector('select') as HTMLSelectElement
-    if(select.value === '1') return
+    if(select.value === '1') {
+      select.value = '12'
+      setCharacterSubmit({...characterSubmit, regionId: Number(select.value)})
+      return
+    }
     select.value = String(Number(select.value) - 1)
     setCharacterSubmit({...characterSubmit, regionId: Number(select.value)})
   }
 
   const rightHandle = () => {
     const select = document.querySelector('select') as HTMLSelectElement
-    if(select.value === '12') return
+    if(select.value === '12') {
+      select.value = '1'
+      setCharacterSubmit({...characterSubmit, regionId: Number(select.value)})
+      return
+    }
     select.value = String(Number(select.value) + 1)
     setCharacterSubmit({...characterSubmit, regionId: Number(select.value)})
   }
