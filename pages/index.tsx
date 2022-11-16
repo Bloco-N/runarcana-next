@@ -38,13 +38,16 @@ const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
+      span{
+        cursor: pointer;
+      }
       .exclude-icon{
         position: absolute;
         top: 1rem;
         right: 1rem;
         opacity: 0.5;
         transition: 0.5s;
+        cursor: pointer;
         :hover{
           opacity: 1;
         }
@@ -89,6 +92,12 @@ export default function Home() {
     setModalOpen(true)
   }
 
+  const handleClickCard = (e: React.MouseEvent<HTMLElement>) => {
+    const target = e.target as HTMLElement
+    const route = `dashboard/${target.id}`
+    router.push(route)
+  }
+
   useEffect(() => {
     setLoading(loading)
   }, [loading, setLoading])
@@ -101,9 +110,9 @@ export default function Home() {
           <h2>Personagens</h2>
             <div className='c-characters'>
               {data ? data.userInfo.characters.map(item => (
-                <Card className='grow-up' key={item.id}>
+                <Card id={String(item.id)} className='grow-up' key={item.id}>
                   <Image onClick={handleExlude} id={String(item.id)} className='exclude-icon' src={isDark ? excludeIcon : excludeLightIcon} alt="exclude icon" />
-                  <span>{item.name}</span>
+                  <span id={String(item.id)} onClick={handleClickCard}>{item.name}</span>
                 </Card>
               )) : ''}
               <Button onClick={handleCreateCharacter}>+</Button>
