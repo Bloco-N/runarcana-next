@@ -10,6 +10,65 @@ const USER_CHARACTERS_HOME = gql`
     }
   }
 `
+const USER_CHARACTER_DASHBOARD = gql`
+query Query($charId: Float) {
+  userInfo(charId: $charId) {
+    characters {
+      name
+      Origin {
+        name
+      }
+      Past {
+        name
+      }
+      Region{
+        id
+        name
+      }
+      wisdomSavingThrow
+      wisdom
+      tecnology
+      survival
+      strengthSavingThrow
+      strength
+      stealth
+      sleightOfHand
+      religion
+      proficiencyBonus
+      persuasion
+      performance
+      perception
+      nature
+      medicine
+      investigation
+      intimidation
+      intelligenceSavingThrow
+      intelligence
+      insight
+      history
+      expression
+      exaltation
+      essence
+      dexteritySavingThrow
+      dexterity
+      deception
+      constitutionSavingThrow
+      constitution
+      charismaSavingThrow
+      charisma
+      athletics
+      arcana
+      animalHandling
+      acrobatics
+      CharacterRunarcanaClass {
+        RunarcanaClass {
+          name
+        }
+      }
+    }
+  }
+}
+`
 
 const LIST_ALL_REGIONS = gql`
   query Query {
@@ -84,11 +143,12 @@ const GET_PAST_BY_ID = gql`
 
 export {
   USER_CHARACTERS_HOME,
+  USER_CHARACTER_DASHBOARD,
   LIST_ALL_REGIONS,
   LIST_ALL_CLASSES,
   LIST_ALL_PASTS,
   GET_REGION_BY_ID,
   GET_ORIGIN_BY_ID,
   GET_CLASS_BY_ID,
-  GET_PAST_BY_ID
+  GET_PAST_BY_ID,
 }
