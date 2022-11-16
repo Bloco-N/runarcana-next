@@ -209,12 +209,6 @@ const Container = styled.div`
       width: 50%;
     }
   }
-  .none{
-    display: none;
-  }
-  .block{
-    display: block;
-  }
   .name-field{
     padding-top: 5rem;
   }

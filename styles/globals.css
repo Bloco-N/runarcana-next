@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Underdog&display=swap');
 
 
 :root {
@@ -14,6 +15,7 @@
 html,
 body {
   font-family: 'IM Fell English SC', serif;
+
   font-size: 2rem;
   padding: 0;
   margin: 0;
@@ -100,6 +102,16 @@ a:hover {
   }
 }
 
+@keyframes blink {
+  from {
+    filter: none;
+  }
+
+  to {
+    filter: drop-shadow(0 0 10px rgba(147, 162, 191, 0.9));
+  }
+}
+
 @keyframes grow-up {
 
   from {
@@ -140,4 +152,12 @@ a:hover {
   background-color: var(--secondary);
   border-radius: 1rem;
   border: 1rem solid transparent;
+}
+
+.none {
+  display: none;
+}
+
+.block {
+  display: block;
 }
