@@ -3,8 +3,10 @@ import styled from 'styled-components';
 import useDarkTheme from '../hooks/useDarkTheme';
 
 type CardProps = {
+  id?: string
   children: React.ReactNode,
   className?:string
+  onClick?: React.MouseEventHandler
 }
 
 type ContainerProps = {
