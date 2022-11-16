@@ -152,14 +152,14 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     .skills-wrapper{
-      width: 90%;
+      width: 100%;
       font-size:1.5rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 0.5rem;
       >div{
-        width: 90%;
+        width: 98%;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -171,6 +171,11 @@ const Container = styled.div`
         }
         >div{
           width: 2rem;
+        }
+        >section{
+          width: 70%;
+          display: flex;
+          justify-content: space-between;
         }
       }
     }
@@ -396,97 +401,230 @@ export default function CharacterDashBoard(){
         <div className="skills-wrapper">
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='acrobatics' value={character?.acrobatics as string}/>
-            <p>acrobacia</p>
+            <section>
+              <p>
+                acrobacia
+              </p>
+              <p>
+                (des)
+              </p>
+            </section>
             <p className='skill-value'>{skillsValue?.acrobatics}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='arcana' value={character?.arcana as string}/>
-            <p>arcanismo</p>
+            <section>
+              <p>
+                arcanismo
+              </p>
+              <p>
+                (int)
+              </p>
+            </section>
             <p className='skill-value'>{skillsValue?.arcana}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='athletics' value={character?.athletics as string}/>
-            <p>atletismo</p>
+            <section>
+              <p>
+                atletismo
+              </p>
+              <p>
+                (for)
+              </p>
+            </section>
             <p className='skill-value'>{skillsValue?.athletics}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='performance' value={character?.performance as string}/>
-            <p>atuação</p>
+            <section>
+              <p>
+                atuação
+              </p>
+              <p>
+                (car)
+              </p>
+            </section>
             <p className='skill-value'>{skillsValue?.performance}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='deception' value={character?.deception as string}/>
-            <p>enganação</p>
+            <section>
+              <p>
+                enganação
+              </p>
+              <p>
+                (car)
+              </p>
+            </section>
             <p className='skill-value'>{skillsValue?.deception}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='stealth' value={character?.stealth as string}/>
-            <p>furtividade</p>
+            <section>
+              <p>
+                furtividade
+              </p>
+              <p>
+                (des)
+              </p>
+            </section>
             <p className='skill-value'>{skillsValue?.stealth}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='history' value={character?.history as string}/>  
-            <p>história</p>
+            <section>
+              <p>
+                história 
+              </p>
+              <p>
+                (int)
+              </p>
+            </section>
             <p className='skill-value'>{skillsValue?.history}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='intimidation' value={character?.intimidation as string}/>
-            <p>intimidação</p>
+            <section>
+              <p>
+                intimidação
+              </p>
+              <p>
+                (car)
+              </p>
+            </section>
             <p className='skill-value'>{skillsValue?.intimidation}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='insight' value={character?.insight as string}/>  
-            <p>intuição</p>
+            <section>
+              <p>
+                intuição
+              </p>
+              <p>
+                (sab)
+              </p>
+            </section>
             <p className='skill-value'>{skillsValue?.insight}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='investigation' value={character?.investigation as string}/>
-            <p>investigação</p>
+            <section>
+              <p>
+                investigação
+              </p>
+              <p>
+                (int)
+              </p>
+            </section>
             <p className='skill-value'>{skillsValue?.investigation}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='animalHandling' value={character?.animalHandling as string}/>
-            <p>lidar com animais</p>
+            <section>
+              <p>
+                lidar com animais
+              </p>
+              <p>
+                (sab)
+              </p>
+            </section>
             <p className='skill-value'>{skillsValue?.animalHandling}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='medicine' value={character?.medicine as string}/>
-            <p>medicina</p>
+            <section>
+              <p>
+                medicina
+              </p>
+              <p>
+                (sab)
+              </p>
+            </section>
             <p className='skill-value'>{skillsValue?.medicine}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='nature' value={character?.nature as string}/>
-            <p>natureza</p>
+            <section>
+              <p>
+                natureza
+              </p>
+              <p>
+                (int)
+              </p>
+            </section>
             <p className='skill-value'>{skillsValue?.nature}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='perception' value={character?.perception as string}/>
-            <p>percepção</p>
+            <section>
+              <p>
+                percepção
+              </p>
+              <p>
+                (sab)
+              </p>
+            </section>
             <p className='skill-value'>{skillsValue?.perception}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='persuasion' value={character?.persuasion as string}/>
-            <p>persuasão</p>
+            <section>
+              <p>
+                persuasão
+              </p>
+              <p>
+                (car)
+              </p>
+            </section>
             <p className='skill-value'>{skillsValue?.persuasion}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>}  name='sleightOfHand' value={character?.sleightOfHand as string}/>
-            <p>perstidigitação</p>
+            <section>
+              <p>
+                prestidigitação
+              </p>
+              <p>
+                (des)
+              </p>
+            </section>
             <p className='skill-value'>{skillsValue?.sleightOfHand}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='religion' value={character?.religion as string}/>
-            <p>religião</p>
+            <section>
+              <p>
+                religião
+              </p>
+              <p>
+                (int)
+              </p>
+            </section>
             <p className='skill-value'>{skillsValue?.religion}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='survival' value={character?.survival as string}/>
-            <p>sobrevivência</p>
+            <section>
+              <p>
+                sobrevivência
+              </p>
+              <p>
+                (sab)
+              </p>
+            </section>
             <p className='skill-value'>{skillsValue?.survival}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='tecnology' value={character?.tecnology as string}/>
-            <p>tecnologia</p>
+            <section>
+              <p>
+                tecnologia
+              </p>
+              <p>
+                (int)
+              </p>
+            </section>
             <p className='skill-value'>{skillsValue?.tecnology}</p>
           </div>
         </div>
