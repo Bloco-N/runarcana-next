@@ -63,6 +63,7 @@ const Container = styled.div`
         opacity: 0.2;
         transition: 0.5s;
         z-index: -1;
+        top: -8%;
       }
       .bandopolis-index{
         font-size: 6rem;
@@ -204,6 +205,73 @@ const Container = styled.div`
           width: 70%;
           display: flex;
           justify-content: space-between;
+        }
+      }
+    }
+  }
+  .savingthrow-card{
+    grid-row-start: 5;
+    grid-row-end: 6;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    >div{
+      display: flex;
+      p{
+        position: relative;
+        top:-1rem;
+        left: -2rem;
+      }
+      .switch{
+        position: relative;
+        top: 4rem;
+        left: 7rem;
+        margin-left: -5rem;
+        z-index: 2;
+        div{
+          height: 3rem;
+          width: 3rem;
+        }
+      }
+      .attribute-value{
+              font-family: 'Underdog', cursive;
+              height: 6rem;
+              width: 6rem;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+              background-color: rgba(76, 76, 76, 0.25);
+              backdrop-filter: blur(0.2rem);
+              font-size: 3rem;
+          }
+    }
+  }
+  .money-card{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    div{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+      .attribute-value{
+        all: unset;
+        appearance: none;
+        -moz-appearance: textfield;
+        font-family: 'Underdog', cursive;
+        height: 4rem;
+        width: 4rem;
+        text-align: center;
+        clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+        background-color: rgba(76, 76, 76, 0.25);
+        backdrop-filter: blur(0.2rem);
+        ::-webkit-inner-spin-button{
+          -webkit-appearance: none;
+          margin: 0;
         }
       }
     }
@@ -399,7 +467,7 @@ export default function CharacterDashBoard(){
             <p className='modifier'>{modifiers.strength}</p>
           </div>
           <div>
-            <label htmlFor="dexterity">dex</label>
+            <label htmlFor="dexterity">des</label>
             <input onChange={(e) => onChangeAttribute(e)} defaultValue={attributes?.dexterity} name='dexterity' className='attribute-value' type="number" />
             <p className='modifier'>{modifiers.dexterity}</p>
           </div>
@@ -669,6 +737,60 @@ export default function CharacterDashBoard(){
             </section>
             <p className='skill-value'>{skillsValue?.tecnology}</p>
           </div>
+        </div>
+      </Card>
+      <Card className='savingthrow-card'>
+        <div>
+          <p>for</p>
+          <ThreeWaySwitch className='switch' skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} value={skills?.strengthSavingThrow as string} name='strengthSavingThrow'/>
+          <div className="attribute-value">{skillsValue?.strengthSavingThrow}</div>
+        </div>
+        <div>
+          <p>des</p>
+        <ThreeWaySwitch className='switch' skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} value={skills?.dexteritySavingThrow as string} name='dexteritySavingThrow'/>
+          <div className="attribute-value">{skillsValue?.dexteritySavingThrow}</div>
+        </div>
+        <div>
+          <p>con</p>
+          <ThreeWaySwitch className='switch' skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} value={skills?.constitutionSavingThrow as string} name='constitutionSavingThrow'/>
+          <div className="attribute-value">{skillsValue?.constitutionSavingThrow}</div>
+        </div>
+        <div>
+          <p>int</p>
+          <ThreeWaySwitch className='switch' skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} value={skills?.intelligenceSavingThrow as string} name='intelligenceSavingThrow'/>
+          <div className="attribute-value">{skillsValue?.intelligenceSavingThrow}</div>
+        </div>
+        <div>
+          <p>sab</p>
+          <ThreeWaySwitch className='switch' skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} value={skills?.wisdomSavingThrow as string} name='wisdomSavingThrow'/>
+          <div className="attribute-value">{skillsValue?.wisdomSavingThrow}</div>
+        </div>
+        <div>
+          <p>car</p>
+          <ThreeWaySwitch className='switch' skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} value={skills?.charismaSavingThrow as string} name='charismaSavingThrow'/>
+          <div className="attribute-value">{skillsValue?.charismaSavingThrow}</div>
+        </div>
+      </Card>
+      <Card className='money-card'>
+        <div>
+          <input defaultValue={0} name='PL' className='attribute-value' type="number" />
+          <p>pl</p>
+        </div>
+        <div>
+          <input defaultValue={0} name='PO' className='attribute-value' type="number" />
+          <p>po</p>
+        </div>
+        <div>
+          <input defaultValue={0} name='PE' className='attribute-value' type="number" />
+          <p>pe</p>
+        </div>
+        <div>
+          <input defaultValue={0} name='PP' className='attribute-value' type="number" />
+          <p>pp</p>
+        </div>
+        <div>
+          <input defaultValue={0} name='PC' className='attribute-value' type="number" />
+          <p>pc</p>
         </div>
       </Card>
     </Container>
