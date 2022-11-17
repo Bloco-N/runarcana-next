@@ -60,7 +60,7 @@ const Nav = () => {
         Home  
       </Link>
       <Link href='/about'>
-        About 
+        Sobre 
       </Link>
       {user ? (
         <button onClick={handleSignOut}>
