@@ -144,6 +144,34 @@ const Container = styled.div`
         }
       }
     }
+    .passive-wrapper{
+      display: flex;
+      gap: 2rem;
+      grid-row-start: 2;
+      grid-row-end: 4;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      div{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        .attribute-value{
+            all: unset;
+            appearance: none;
+            -moz-appearance: textfield;
+            font-family: 'Underdog', cursive;
+            height: 6rem;
+            width: 6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+            background-color: rgba(76, 76, 76, 0.25);
+            backdrop-filter: blur(0.2rem);
+            font-size: 3rem;
+        }
+      }
+    }
   }
   .skills-card{
     grid-row-start: 1;
@@ -394,6 +422,20 @@ export default function CharacterDashBoard(){
             <label htmlFor="charisma">car</label>
             <input onChange={(e) => onChangeAttribute(e)} defaultValue={attributes?.charisma} name='charisma' className='attribute-value' type="number" />
             <p className='modifier'>{modifiers.charisma}</p>
+          </div>
+        </div>
+        <div className="passive-wrapper">
+          <div>
+            <div className="attribute-value">{skillsValue?.perception as number + 10}</div>
+            <p>percepção passiva</p>
+          </div>
+          <div>
+            <div className="attribute-value">{skillsValue?.insight as number + 10}</div>
+            <p>intuição passiva</p>
+          </div>
+          <div>
+            <div className="attribute-value">{modifiers.dexterity}</div>
+            <p>iniciativa</p>
           </div>
         </div>
       </Card>
