@@ -7,6 +7,7 @@ type ThreeWaySwitchProps = {
   setSkills: Dispatch<SetStateAction<Skills>>,
   name:string
   value:string
+  className?:string
 }
 
 const Container = styled.div`
@@ -81,7 +82,7 @@ const ThreeWaySwitch = (props:ThreeWaySwitchProps) => {
     }
   }
   return (
-    <Container ref={parent} onClick={(e:React.MouseEvent<HTMLElement>) => handleClick(e)}>
+    <Container {...props} ref={parent} onClick={(e:React.MouseEvent<HTMLElement>) => handleClick(e)}>
       <div ref={children}></div>
     </Container>
   );
