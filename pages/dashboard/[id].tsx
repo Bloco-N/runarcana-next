@@ -36,6 +36,7 @@ import ThreeWaySwitch from '../../components/ThreeWaySwitch';
 import { UPDATE_CHARACTER_ATTRIBUTES, UPDATE_CHARACTER_PROFICIENCY } from '../../gql/mutations';
 
 const Container = styled.div`
+  width: 1450px;
   padding: 4rem;
   height: 80%;
   display: grid;
@@ -320,6 +321,10 @@ export default function CharacterDashBoard(){
   }, [loadingProficiency, setLoading])
 
   useEffect(() => {
+    setLoading(loadingAttributes)
+  }, [loadingAttributes, setLoading])
+
+  useEffect(() => {
     setCharacter(data?.userInfo.characters[0])
   }, [data])
 
@@ -430,6 +435,15 @@ export default function CharacterDashBoard(){
   const onChangeAttribute = (e:ChangeEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement
     const aux = attributes as Attributes
+    if(Number(target.value) > 50) {
+      target.value = '50'
+      aux[target.name as keyof Attributes] = 50
+      setAttributes({...aux})
+    }else if(Number(target.value) < 0){
+      target.value = '0'
+      aux[target.name as keyof Attributes] = 0
+      setAttributes({...aux})
+    }
     aux[target.name as keyof Attributes] = Number(target.value)
     setAttributes({...aux})
   }
@@ -463,32 +477,32 @@ export default function CharacterDashBoard(){
         <div className="attributes-wrapper">
           <div>
             <label htmlFor="strenght">for</label>
-            <input onChange={(e) => onChangeAttribute(e)} defaultValue={attributes?.strength} name='strength' className='attribute-value' type="number" />
+            <input min={0} max={50} onChange={(e) => onChangeAttribute(e)} defaultValue={attributes?.strength} name='strength' className='attribute-value' type="number" />
             <p className='modifier'>{modifiers.strength}</p>
           </div>
           <div>
             <label htmlFor="dexterity">des</label>
-            <input onChange={(e) => onChangeAttribute(e)} defaultValue={attributes?.dexterity} name='dexterity' className='attribute-value' type="number" />
+            <input min={0} max={50} onChange={(e) => onChangeAttribute(e)} defaultValue={attributes?.dexterity} name='dexterity' className='attribute-value' type="number" />
             <p className='modifier'>{modifiers.dexterity}</p>
           </div>
           <div>
             <label htmlFor="constitution">con</label>
-            <input onChange={(e) => onChangeAttribute(e)} defaultValue={attributes?.constitution} name='constitution' className='attribute-value' type="number" />
+            <input min={0} max={50} onChange={(e) => onChangeAttribute(e)} defaultValue={attributes?.constitution} name='constitution' className='attribute-value' type="number" />
             <p className='modifier'>{modifiers.constitution}</p>
           </div>
           <div>
             <label htmlFor="intelligence">int</label>
-            <input onChange={(e) => onChangeAttribute(e)} defaultValue={attributes?.intelligence} name='intelligence' className='attribute-value' type="number" />
+            <input min={0} max={50} onChange={(e) => onChangeAttribute(e)} defaultValue={attributes?.intelligence} name='intelligence' className='attribute-value' type="number" />
             <p className='modifier'>{modifiers.intelligence}</p>
           </div>
           <div>
             <label htmlFor="wisdom">sab</label>
-            <input onChange={(e) => onChangeAttribute(e)} defaultValue={attributes?.wisdom} name='wisdom' className='attribute-value' type="number" />
+            <input min={0} max={50} onChange={(e) => onChangeAttribute(e)} defaultValue={attributes?.wisdom} name='wisdom' className='attribute-value' type="number" />
             <p className='modifier'>{modifiers.wisdom}</p>
           </div>
           <div>
             <label htmlFor="charisma">car</label>
-            <input onChange={(e) => onChangeAttribute(e)} defaultValue={attributes?.charisma} name='charisma' className='attribute-value' type="number" />
+            <input min={0} max={50} onChange={(e) => onChangeAttribute(e)} defaultValue={attributes?.charisma} name='charisma' className='attribute-value' type="number" />
             <p className='modifier'>{modifiers.charisma}</p>
           </div>
         </div>
