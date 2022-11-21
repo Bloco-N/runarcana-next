@@ -1,36 +1,36 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
-import ListAllRegions from '../types/ListAllRegions';
-import { LIST_ALL_REGIONS } from '../gql/querys';
+import ListAllRegions from '../../types/ListAllRegions';
+import { LIST_ALL_REGIONS } from '../../gql/querys';
 import Image from 'next/image';
-import Button from './Button';
-import demaciaImg from "../public/maps/dark/demacia.svg"
-import freljordImg from "../public/maps/dark/freljord.svg"
-import ixtalImg from "../public/maps/dark/ixtal.svg"
-import shurimaImg from "../public/maps/dark/shurima.svg"
-import restImg from "../public/maps/dark/resto.svg"
-import noxusImg from "../public/maps/dark/noxus.svg"
-import sentinaImg from "../public/maps/dark/sentina.svg"
-import targonImg from "../public/maps/dark/targon.svg"
-import yoniaImg from "../public/maps/dark/yonia.svg"
-import zaumImg from "../public/maps/dark/zaum.svg"
-import shadowImg from "../public/maps/dark/sombras.svg"
-import demaciaLightImg from "../public/maps/light/demacia.svg"
-import freljordLightImg from "../public/maps/light/freljord.svg"
-import ixtalLightImg from "../public/maps/light/ixtal.svg"
-import shurimaLightImg from "../public/maps/light/shurima.svg"
-import restLightImg from "../public/maps/light/resto.svg"
-import noxusLightImg from "../public/maps/light/noxus.svg"
-import sentinaLightImg from "../public/maps/light/sentina.svg"
-import targonLightImg from "../public/maps/light/targon.svg"
-import yoniaLightImg from "../public/maps/light/yonia.svg"
-import zaumLightImg from "../public/maps/light/zaum.svg"
-import shadowLightImg from "../public/maps/light/sombras.svg"
-import CharacterSubmitContext from '../contexts/CharacterSubmitContext';
-import CharacterSubmitContextType from '../types/CharacterSubmitContextType';
-import LoadingContext from '../contexts/LoadingContext';
-import LoadingContextType from '../types/LoadingContextType';
-import useDarkTheme from '../hooks/useDarkTheme';
+import Button from '../Button';
+import demaciaImg from "../../public/maps/dark/demacia.svg"
+import freljordImg from "../../public/maps/dark/freljord.svg"
+import ixtalImg from "../../public/maps/dark/ixtal.svg"
+import shurimaImg from "../../public/maps/dark/shurima.svg"
+import restImg from "../../public/maps/dark/resto.svg"
+import noxusImg from "../../public/maps/dark/noxus.svg"
+import sentinaImg from "../../public/maps/dark/sentina.svg"
+import targonImg from "../../public/maps/dark/targon.svg"
+import yoniaImg from "../../public/maps/dark/yonia.svg"
+import zaumImg from "../../public/maps/dark/zaum.svg"
+import shadowImg from "../../public/maps/dark/sombras.svg"
+import demaciaLightImg from "../../public/maps/light/demacia.svg"
+import freljordLightImg from "../../public/maps/light/freljord.svg"
+import ixtalLightImg from "../../public/maps/light/ixtal.svg"
+import shurimaLightImg from "../../public/maps/light/shurima.svg"
+import restLightImg from "../../public/maps/light/resto.svg"
+import noxusLightImg from "../../public/maps/light/noxus.svg"
+import sentinaLightImg from "../../public/maps/light/sentina.svg"
+import targonLightImg from "../../public/maps/light/targon.svg"
+import yoniaLightImg from "../../public/maps/light/yonia.svg"
+import zaumLightImg from "../../public/maps/light/zaum.svg"
+import shadowLightImg from "../../public/maps/light/sombras.svg"
+import CharacterSubmitContext from '../../contexts/CharacterSubmitContext';
+import CharacterSubmitContextType from '../../types/CharacterSubmitContextType';
+import LoadingContext from '../../contexts/LoadingContext';
+import LoadingContextType from '../../types/LoadingContextType';
+import useDarkTheme from '../../hooks/useDarkTheme';
 
 const RegionInput = () => {
   const isDark = useDarkTheme()

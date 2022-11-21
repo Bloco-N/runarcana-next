@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
-import Button from './Button';
-import { LIST_ALL_CLASSES } from '../gql/querys';
-import ListAllClasses from '../types/ListAllClasses';
-import CharacterSubmitContext from '../contexts/CharacterSubmitContext';
-import CharacterSubmitContextType from '../types/CharacterSubmitContextType';
-import LoadingContext from '../contexts/LoadingContext';
-import LoadingContextType from '../types/LoadingContextType';
+import Button from '../Button';
+import { LIST_ALL_CLASSES } from '../../gql/querys';
+import ListAllClasses from '../../types/ListAllClasses';
+import CharacterSubmitContext from '../../contexts/CharacterSubmitContext';
+import CharacterSubmitContextType from '../../types/CharacterSubmitContextType';
+import LoadingContext from '../../contexts/LoadingContext';
+import LoadingContextType from '../../types/LoadingContextType';
 
 const RunarcanaClassInput = () => {
   const [characterSubmit, setCharacterSubmit] = useContext(CharacterSubmitContext) as CharacterSubmitContextType

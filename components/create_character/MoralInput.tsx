@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
-import CharacterSubmitContext from '../contexts/CharacterSubmitContext';
-import CharacterSubmitContextType from '../types/CharacterSubmitContextType';
-import Input from './Input';
+import CharacterSubmitContext from '../../contexts/CharacterSubmitContext';
+import CharacterSubmitContextType from '../../types/CharacterSubmitContextType';
+import Input from '../Input';
 
 const MoralInput = () => {
   const [characterSubmit, setCharacterSubmit] = useContext(CharacterSubmitContext) as CharacterSubmitContextType

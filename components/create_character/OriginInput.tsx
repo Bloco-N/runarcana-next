@@ -1,16 +1,16 @@
 import Image from 'next/image';
 import React, { useContext, useState } from 'react';
-import yordle from '../public/origins/yordle.png'
-import vastaya from '../public/origins/vastaya.png'
-import troll from '../public/origins/troll.png'
-import minotaurs from '../public/origins/minotauro.png'
-import halfDragon from '../public/origins/meio-dragão.png'
-import human from '../public/origins/humano.png'
-import construct from '../public/origins/construto.png'
-import antroplantae from '../public/origins/antroplantae.png'
-import runinata from '../public/origins/runinata.png'
-import CharacterSubmitContext from '../contexts/CharacterSubmitContext';
-import CharacterSubmitContextType from '../types/CharacterSubmitContextType';
+import yordle from '../../public/origins/yordle.png'
+import vastaya from '../../public/origins/vastaya.png'
+import troll from '../../public/origins/troll.png'
+import minotaurs from '../../public/origins/minotauro.png'
+import halfDragon from '../../public/origins/meio-dragão.png'
+import human from '../../public/origins/humano.png'
+import construct from '../../public/origins/construto.png'
+import antroplantae from '../../public/origins/antroplantae.png'
+import runinata from '../../public/origins/runinata.png'
+import CharacterSubmitContext from '../../contexts/CharacterSubmitContext';
+import CharacterSubmitContextType from '../../types/CharacterSubmitContextType';
 
 const OriginInput = () => {
   const [characterSubmit, setCharacterSubmit] = useContext(CharacterSubmitContext) as CharacterSubmitContextType

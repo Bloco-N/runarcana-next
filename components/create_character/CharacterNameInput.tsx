@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { useQuery } from '@apollo/client';
-import CharacterSubmitContext from '../contexts/CharacterSubmitContext';
-import CharacterSubmitContextType from '../types/CharacterSubmitContextType';
-import Input from './Input';
-import { GET_CLASS_BY_ID, GET_ORIGIN_BY_ID, GET_PAST_BY_ID, GET_REGION_BY_ID } from '../gql/querys';
-import GetRegionById from '../types/GetRegionById';
-import GetOriginById from '../types/GetOriginById';
-import GetClassById from '../types/GetClassById';
-import GetPastById from '../types/GetPastById';
+import CharacterSubmitContext from '../../contexts/CharacterSubmitContext';
+import CharacterSubmitContextType from '../../types/CharacterSubmitContextType';
+import Input from '../Input';
+import { GET_CLASS_BY_ID, GET_ORIGIN_BY_ID, GET_PAST_BY_ID, GET_REGION_BY_ID } from '../../gql/querys';
+import GetRegionById from '../../types/GetRegionById';
+import GetOriginById from '../../types/GetOriginById';
+import GetClassById from '../../types/GetClassById';
+import GetPastById from '../../types/GetPastById';
 
 const CharacterNameInput = () => {
   const [characterSubmit, setCharacterSubmit] = useContext(CharacterSubmitContext) as CharacterSubmitContextType

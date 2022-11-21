@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
-import { LIST_ALL_PASTS } from '../gql/querys';
-import Button from './Button';
-import ListAllPasts from '../types/ListAllPasts';
-import CharacterSubmitContext from '../contexts/CharacterSubmitContext';
-import CharacterSubmitContextType from '../types/CharacterSubmitContextType';
-import LoadingContext from '../contexts/LoadingContext';
-import LoadingContextType from '../types/LoadingContextType';
+import { LIST_ALL_PASTS } from '../../gql/querys';
+import Button from '../Button';
+import ListAllPasts from '../../types/ListAllPasts';
+import CharacterSubmitContext from '../../contexts/CharacterSubmitContext';
+import CharacterSubmitContextType from '../../types/CharacterSubmitContextType';
+import LoadingContext from '../../contexts/LoadingContext';
+import LoadingContextType from '../../types/LoadingContextType';
 
 const PastInput = () => {
   const [characterSubmit, setCharacterSubmit] = useContext(CharacterSubmitContext) as CharacterSubmitContextType

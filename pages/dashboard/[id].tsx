@@ -2,7 +2,6 @@ import { useQuery, useMutation } from '@apollo/client';
 import Image from 'next/image';
 import { useRouter } from "next/router"
 import { ChangeEvent, Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
-import styled from "styled-components"
 import Card from '../../components/Card';
 import LoadingContext from '../../contexts/LoadingContext';
 import { USER_CHARACTER_DASHBOARD } from '../../gql/querys';
@@ -34,251 +33,7 @@ import shadowLightImg from "../../public/maps/light/sombras.svg"
 import { modifier, proficiency } from '../../utils/attributeFunctios';
 import ThreeWaySwitch from '../../components/ThreeWaySwitch';
 import { UPDATE_CHARACTER_ATTRIBUTES, UPDATE_CHARACTER_PROFICIENCY } from '../../gql/mutations';
-
-const Container = styled.div`
-  width: 1450px;
-  padding: 4rem;
-  height: 80%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(8, 11rem);
-  gap: 1rem;
-  .region-card{
-    grid-row-start: 3;
-    grid-row-end: 5;
-    grid-column-start: 4;
-    grid-column-end: 5;
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    .map-wrapper{
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      right: -5%;
-      top: 4rem;
-      .map{
-        width: 100%;
-        height: auto;
-        position: absolute;
-        opacity: 0.2;
-        transition: 0.5s;
-        z-index: -1;
-        top: -8%;
-      }
-      .bandopolis-index{
-        font-size: 6rem;
-        position: absolute;
-        top: 20%;
-        right: 50%;
-      }
-      .region-name{
-        position: relative;
-        padding: 1rem;
-        border-radius: 1rem;
-        top: 60%;
-        display: inline;
-        background-color: var(--secondary);
-        color: var(--primary);
-      }
-    }
-  }
-  .infos-card{
-    grid-row-start: 1;
-    grid-row-end: 3;
-    grid-column-start: 4;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .attributes-card{
-    grid-row-start: 1;
-    grid-row-end: 5;
-    grid-column-start: 2;
-    grid-column-end: 4;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    .attributes-wrapper{
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(2, 1fr);
-      gap: 1rem;
-      grid-row-start: 1;
-      grid-row-end: 2;
-      grid-column-start: 1;
-      grid-column-end: 3;
-      div{
-        label{
-          position: relative;
-          top: -3rem;
-        }
-        .attribute-value{
-          all: unset;
-          appearance: none;
-          -moz-appearance: textfield;
-          font-family: 'Underdog', cursive;
-          height: 6rem;
-          width: 6rem;
-          text-align: center;
-          clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-          background-color: rgba(76, 76, 76, 0.25);
-          backdrop-filter: blur(0.2rem);
-          font-size: 3rem;
-          ::-webkit-inner-spin-button{
-            -webkit-appearance: none;
-            margin: 0;
-          }
-        }
-        .modifier{
-          font-family: 'Underdog', cursive;
-          height: 4rem;
-          width: 4rem;
-          clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-          background-color: rgba(76, 76, 76, 0.25);
-          backdrop-filter: blur(0.2rem);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-          top: -3rem;
-          left: 7rem;
-        }
-      }
-    }
-    .passive-wrapper{
-      display: flex;
-      gap: 2rem;
-      grid-row-start: 2;
-      grid-row-end: 4;
-      grid-column-start: 1;
-      grid-column-end: 4;
-      div{
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        .attribute-value{
-            all: unset;
-            appearance: none;
-            -moz-appearance: textfield;
-            font-family: 'Underdog', cursive;
-            height: 6rem;
-            width: 6rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-            background-color: rgba(76, 76, 76, 0.25);
-            backdrop-filter: blur(0.2rem);
-            font-size: 3rem;
-        }
-      }
-    }
-  }
-  .skills-card{
-    grid-row-start: 1;
-    grid-row-end: 9;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .skills-wrapper{
-      width: 100%;
-      font-size:1.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 0.5rem;
-      >div{
-        width: 98%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border: solid 0.1rem var(--secondary);
-        padding: 1rem;
-        border-radius: 1rem;
-        .skill-value{
-          font-family: 'Underdog', cursive;
-        }
-        >div{
-          width: 2rem;
-        }
-        >section{
-          width: 70%;
-          display: flex;
-          justify-content: space-between;
-        }
-      }
-    }
-  }
-  .savingthrow-card{
-    grid-row-start: 5;
-    grid-row-end: 6;
-    grid-column-start: 2;
-    grid-column-end: 4;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    >div{
-      display: flex;
-      p{
-        position: relative;
-        top:-1rem;
-        left: -2rem;
-      }
-      .switch{
-        position: relative;
-        top: 4rem;
-        left: 7rem;
-        margin-left: -5rem;
-        z-index: 2;
-        div{
-          height: 3rem;
-          width: 3rem;
-        }
-      }
-      .attribute-value{
-              font-family: 'Underdog', cursive;
-              height: 6rem;
-              width: 6rem;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-              background-color: rgba(76, 76, 76, 0.25);
-              backdrop-filter: blur(0.2rem);
-              font-size: 3rem;
-          }
-    }
-  }
-  .money-card{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    div{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.2rem;
-      .attribute-value{
-        all: unset;
-        appearance: none;
-        -moz-appearance: textfield;
-        font-family: 'Underdog', cursive;
-        height: 4rem;
-        width: 4rem;
-        text-align: center;
-        clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-        background-color: rgba(76, 76, 76, 0.25);
-        backdrop-filter: blur(0.2rem);
-        ::-webkit-inner-spin-button{
-          -webkit-appearance: none;
-          margin: 0;
-        }
-      }
-    }
-  }
-
-`
+import Container from '../../styles/dashboardStyles';
 
 export default function CharacterDashBoard(){
   const isDark = useDarkTheme()
@@ -508,6 +263,14 @@ export default function CharacterDashBoard(){
         </div>
         <div className="passive-wrapper">
           <div>
+            <div className="attribute-value">{modifiers.dexterity}</div>
+            <p>iniciativa</p>
+          </div>
+          <div>
+            <div className="attribute-value">{modifiers.dexterity}</div>
+            <p>deslocamento</p>
+          </div>
+          <div>
             <div className="attribute-value">{skillsValue?.perception as number + 10}</div>
             <p>percepção passiva</p>
           </div>
@@ -515,38 +278,23 @@ export default function CharacterDashBoard(){
             <div className="attribute-value">{skillsValue?.insight as number + 10}</div>
             <p>intuição passiva</p>
           </div>
-          <div>
-            <div className="attribute-value">{modifiers.dexterity}</div>
-            <p>iniciativa</p>
-          </div>
+        </div>
+        <div className="life-wrapper">
+          <p>pontos de vida</p>
+          <input min={0} max={50}  className="current" name='current-life' defaultValue={0} type='number'/>
+          <div className="life-count total">
+            10
+          </div>  
+          <input min={0} max={50}  className="extra" name='current-life' defaultValue={0} type='number'/>
+        </div>
+        <div className="ca-wrapper">
+          <p>ca</p>
+          <div className="ca">10</div>
+          <input min={0} max={10} type='number' className="shield-bonus" defaultValue={0} name='shield-bonus'/>
         </div>
       </Card>
       <Card className='skills-card'>
         <div className="skills-wrapper">
-          <div>
-            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='acrobatics' value={character?.acrobatics as string}/>
-            <section>
-              <p>
-                acrobacia
-              </p>
-              <p>
-                (des)
-              </p>
-            </section>
-            <p className='skill-value'>{skillsValue?.acrobatics}</p>
-          </div>
-          <div>
-            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='arcana' value={character?.arcana as string}/>
-            <section>
-              <p>
-                arcanismo
-              </p>
-              <p>
-                (int)
-              </p>
-            </section>
-            <p className='skill-value'>{skillsValue?.arcana}</p>
-          </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='athletics' value={character?.athletics as string}/>
             <section>
@@ -560,28 +308,16 @@ export default function CharacterDashBoard(){
             <p className='skill-value'>{skillsValue?.athletics}</p>
           </div>
           <div>
-            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='performance' value={character?.performance as string}/>
+            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='acrobatics' value={character?.acrobatics as string}/>
             <section>
               <p>
-                atuação
+                acrobacia
               </p>
               <p>
-                (car)
+                (des)
               </p>
             </section>
-            <p className='skill-value'>{skillsValue?.performance}</p>
-          </div>
-          <div>
-            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='deception' value={character?.deception as string}/>
-            <section>
-              <p>
-                enganação
-              </p>
-              <p>
-                (car)
-              </p>
-            </section>
-            <p className='skill-value'>{skillsValue?.deception}</p>
+            <p className='skill-value'>{skillsValue?.acrobatics}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='stealth' value={character?.stealth as string}/>
@@ -596,6 +332,30 @@ export default function CharacterDashBoard(){
             <p className='skill-value'>{skillsValue?.stealth}</p>
           </div>
           <div>
+            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>}  name='sleightOfHand' value={character?.sleightOfHand as string}/>
+            <section>
+              <p>
+                prestidigitação
+              </p>
+              <p>
+                (des)
+              </p>
+            </section>
+            <p className='skill-value'>{skillsValue?.sleightOfHand}</p>
+          </div>
+          <div>
+            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='arcana' value={character?.arcana as string}/>
+            <section>
+              <p>
+                arcanismo
+              </p>
+              <p>
+                (int)
+              </p>
+            </section>
+            <p className='skill-value'>{skillsValue?.arcana}</p>
+          </div>
+          <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='history' value={character?.history as string}/>  
             <section>
               <p>
@@ -608,16 +368,52 @@ export default function CharacterDashBoard(){
             <p className='skill-value'>{skillsValue?.history}</p>
           </div>
           <div>
-            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='intimidation' value={character?.intimidation as string}/>
+            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='investigation' value={character?.investigation as string}/>
             <section>
               <p>
-                intimidação
+                investigação
               </p>
               <p>
-                (car)
+                (int)
               </p>
             </section>
-            <p className='skill-value'>{skillsValue?.intimidation}</p>
+            <p className='skill-value'>{skillsValue?.investigation}</p>
+          </div>
+          <div>
+            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='nature' value={character?.nature as string}/>
+            <section>
+              <p>
+                natureza
+              </p>
+              <p>
+                (int)
+              </p>
+            </section>
+            <p className='skill-value'>{skillsValue?.nature}</p>
+          </div>
+          <div>
+            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='religion' value={character?.religion as string}/>
+            <section>
+              <p>
+                religião
+              </p>
+              <p>
+                (int)
+              </p>
+            </section>
+            <p className='skill-value'>{skillsValue?.religion}</p>
+          </div>
+          <div>
+            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='tecnology' value={character?.tecnology as string}/>
+            <section>
+              <p>
+                tecnologia
+              </p>
+              <p>
+                (int)
+              </p>
+            </section>
+            <p className='skill-value'>{skillsValue?.tecnology}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='insight' value={character?.insight as string}/>  
@@ -630,18 +426,6 @@ export default function CharacterDashBoard(){
               </p>
             </section>
             <p className='skill-value'>{skillsValue?.insight}</p>
-          </div>
-          <div>
-            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='investigation' value={character?.investigation as string}/>
-            <section>
-              <p>
-                investigação
-              </p>
-              <p>
-                (int)
-              </p>
-            </section>
-            <p className='skill-value'>{skillsValue?.investigation}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='animalHandling' value={character?.animalHandling as string}/>
@@ -668,18 +452,6 @@ export default function CharacterDashBoard(){
             <p className='skill-value'>{skillsValue?.medicine}</p>
           </div>
           <div>
-            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='nature' value={character?.nature as string}/>
-            <section>
-              <p>
-                natureza
-              </p>
-              <p>
-                (int)
-              </p>
-            </section>
-            <p className='skill-value'>{skillsValue?.nature}</p>
-          </div>
-          <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='perception' value={character?.perception as string}/>
             <section>
               <p>
@@ -690,42 +462,6 @@ export default function CharacterDashBoard(){
               </p>
             </section>
             <p className='skill-value'>{skillsValue?.perception}</p>
-          </div>
-          <div>
-            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='persuasion' value={character?.persuasion as string}/>
-            <section>
-              <p>
-                persuasão
-              </p>
-              <p>
-                (car)
-              </p>
-            </section>
-            <p className='skill-value'>{skillsValue?.persuasion}</p>
-          </div>
-          <div>
-            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>}  name='sleightOfHand' value={character?.sleightOfHand as string}/>
-            <section>
-              <p>
-                prestidigitação
-              </p>
-              <p>
-                (des)
-              </p>
-            </section>
-            <p className='skill-value'>{skillsValue?.sleightOfHand}</p>
-          </div>
-          <div>
-            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='religion' value={character?.religion as string}/>
-            <section>
-              <p>
-                religião
-              </p>
-              <p>
-                (int)
-              </p>
-            </section>
-            <p className='skill-value'>{skillsValue?.religion}</p>
           </div>
           <div>
             <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='survival' value={character?.survival as string}/>
@@ -740,16 +476,52 @@ export default function CharacterDashBoard(){
             <p className='skill-value'>{skillsValue?.survival}</p>
           </div>
           <div>
-            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='tecnology' value={character?.tecnology as string}/>
+            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='performance' value={character?.performance as string}/>
             <section>
               <p>
-                tecnologia
+                atuação
               </p>
               <p>
-                (int)
+                (car)
               </p>
             </section>
-            <p className='skill-value'>{skillsValue?.tecnology}</p>
+            <p className='skill-value'>{skillsValue?.performance}</p>
+          </div>
+          <div>
+            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='deception' value={character?.deception as string}/>
+            <section>
+              <p>
+                enganação
+              </p>
+              <p>
+                (car)
+              </p>
+            </section>
+            <p className='skill-value'>{skillsValue?.deception}</p>
+          </div>
+          <div>
+            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='intimidation' value={character?.intimidation as string}/>
+            <section>
+              <p>
+                intimidação
+              </p>
+              <p>
+                (car)
+              </p>
+            </section>
+            <p className='skill-value'>{skillsValue?.intimidation}</p>
+          </div>
+          <div>
+            <ThreeWaySwitch skills={skills as Skills} setSkills={setSkills as Dispatch<SetStateAction<Skills>>} name='persuasion' value={character?.persuasion as string}/>
+            <section>
+              <p>
+                persuasão
+              </p>
+              <p>
+                (car)
+              </p>
+            </section>
+            <p className='skill-value'>{skillsValue?.persuasion}</p>
           </div>
         </div>
       </Card>
@@ -806,6 +578,9 @@ export default function CharacterDashBoard(){
           <input defaultValue={0} name='PC' className='attribute-value' type="number" />
           <p>pc</p>
         </div>
+      </Card>
+      <Card className='proficiency-card'>
+
       </Card>
     </Container>
   )

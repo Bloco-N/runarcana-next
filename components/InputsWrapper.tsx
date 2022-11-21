@@ -1,11 +1,11 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import CreateCharacterSubmit from '../types/CreateCharacterSubmit';
-import CharacterNameInput from './CharacterNameInput';
-import MoralInput from './MoralInput';
-import OriginInput from './OriginInput';
-import PastInput from './PastInput';
-import RegionInput from './RegionInput';
-import RunarcanaClassInput from './RunarcanaClassInput';
+import CharacterNameInput from './create_character/CharacterNameInput';
+import MoralInput from './create_character/MoralInput';
+import OriginInput from './create_character/OriginInput';
+import PastInput from './create_character/PastInput';
+import RegionInput from './create_character/RegionInput';
+import RunarcanaClassInput from './create_character/RunarcanaClassInput';
 
 type InputsWrapperProps = {
   currentInput: number,
