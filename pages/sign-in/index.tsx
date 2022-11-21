@@ -11,7 +11,6 @@ import { useMutation } from "@apollo/client"
 import { useContext, useEffect } from "react"
 import { useRouter } from "next/router"
 import ErrorModal from "../../components/ErrorModal"
-import Loading from "../../components/Loading"
 import LoadingContext from "../../contexts/LoadingContext"
 import LoadingContextType from "../../types/LoadingContextType"
 
