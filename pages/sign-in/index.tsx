@@ -8,10 +8,12 @@ import SignInSubmit from "../../types/SignInSubmit"
 import SignInResponse from "../../types/SignInResponse"
 import { SIGN_IN } from "../../gql/mutations"
 import { useMutation } from "@apollo/client"
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import { useRouter } from "next/router"
 import ErrorModal from "../../components/ErrorModal"
 import Loading from "../../components/Loading"
+import LoadingContext from "../../contexts/LoadingContext"
+import LoadingContextType from "../../types/LoadingContextType"
 
 const Container = styled.div`
   height: 80%;
@@ -38,6 +40,7 @@ const Container = styled.div`
 export default function SignIn() {
   const router = useRouter()
   const { register, handleSubmit} = useForm<SignInSubmit>()
+  const [, setLoading]  = useContext(LoadingContext) as LoadingContextType
   const [mutateFunction, { data, loading, error }] = useMutation<SignInResponse>(SIGN_IN, {errorPolicy:'all'})
   const onSubmit = (data:SignInSubmit) => { mutateFunction({variables:{data}})}
 
@@ -50,10 +53,13 @@ export default function SignIn() {
     }
   }, [data, router])
 
+  useEffect(() => {
+    setLoading(loading)
+  }, [loading, setLoading])
+
   return (
     <Container>
       { error ? <ErrorModal message={error.message}/> : ''}
-      { loading ? <Loading/> : ''}
       <Card>
         <h2>Codex</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
