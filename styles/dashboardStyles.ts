@@ -162,6 +162,20 @@ const Container = styled.div`
         height: 8rem;
         width: 8rem;
       }
+      .wrapper-extra{
+        height: 6rem;
+        width: 6rem;
+        position: relative;
+        top: 5rem;
+        right: 4rem;
+      }
+      .wrapper-current{
+        height: 6rem;
+        width: 6rem;
+        position: relative;
+        top: 5rem;
+        left: 4rem;
+      }
       .extra{
         all: unset;
         font-family: 'Underdog', cursive;
@@ -170,9 +184,6 @@ const Container = styled.div`
         text-align: center;
         height: 6rem;
         width: 6rem;
-        position: relative;
-        top: 5rem;
-        right: 4rem;
         clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
         background-color: rgba(76, 76, 76, 0.25);
         backdrop-filter: blur(0.2rem);
@@ -189,9 +200,6 @@ const Container = styled.div`
         text-align: center;
         height: 6rem;
         width: 6rem;
-        position: relative;
-        top: 5rem;
-        left: 4rem;
         clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
         background-color: rgba(76, 76, 76, 0.25);
         backdrop-filter: blur(0.2rem);
@@ -224,24 +232,26 @@ const Container = styled.div`
         background-color: rgba(76, 76, 76, 0.25);
         backdrop-filter: blur(0.2rem);
       }
-      .shield-bonus{
-        all: unset;
-        appearance: none;
-        -moz-appearance: textfield;
-        font-family: 'Underdog', cursive;
-        height: 4rem;
-        width: 4rem;
-        text-align: center;
-        clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-        background-color: rgba(76, 76, 76, 0.25);
-        backdrop-filter: blur(0.2rem);
-        ::-webkit-inner-spin-button{
-          -webkit-appearance: none;
-          margin: 0;
-        }
+      .wrapper-bonus{
         position: relative;
         top: 3rem;
         right: 3rem;
+        .shield-bonus{
+          all: unset;
+          appearance: none;
+          -moz-appearance: textfield;
+          font-family: 'Underdog', cursive;
+          height: 4rem;
+          width: 4rem;
+          text-align: center;
+          clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+          background-color: rgba(76, 76, 76, 0.25);
+          backdrop-filter: blur(0.2rem);
+          ::-webkit-inner-spin-button{
+            -webkit-appearance: none;
+            margin: 0;
+          }
+        }
       }
       p{
         position: relative;

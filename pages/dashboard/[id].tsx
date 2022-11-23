@@ -281,16 +281,25 @@ export default function CharacterDashBoard(){
         </div>
         <div className="life-wrapper">
           <p>pontos de vida</p>
-          <input min={0} max={50}  className="current" name='current-life' defaultValue={0} type='number'/>
-          <div className="life-count total">
-            10
+          <div className='wrapper-current' aria-label="vida atual" data-balloon-pos="down">
+            <input min={0} max={50}  className="current" name='current-life' defaultValue={0} type='number'/>
+          </div>
+          <div aria-label="vida total" data-balloon-pos="down">
+            <div  className="life-count">
+              10
+            </div>
+          </div>
+          <div className='wrapper-extra' aria-label="vida extra" data-balloon-pos="down">
+            <input  min={0} max={50}  className="extra" name='current-life' defaultValue={0} type='number'/>
           </div>  
-          <input min={0} max={50}  className="extra" name='current-life' defaultValue={0} type='number'/>
+        
         </div>
         <div className="ca-wrapper">
           <p>ca</p>
           <div className="ca">10</div>
-          <input min={0} max={10} type='number' className="shield-bonus" defaultValue={0} name='shield-bonus'/>
+          <div className="wrapper-bonus" aria-label="bônus de escudo" data-balloon-pos="down">
+            <input min={0} max={10} type='number' className="shield-bonus" defaultValue={0} name='shield-bonus'/>
+          </div>
         </div>
       </Card>
       <Card className='skills-card'>
