@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Underdog&display=swap');
-@import "~balloon-css/src/balloon";
+@import "./balloons.scss";
 
 :root {
   color-scheme: light dark;
@@ -10,6 +10,7 @@
   --balloon-font-size: 1.4rem;
   --balloon-text-color: var(--secondary);
   --balloon-border-radius: 1rem;
+  --balloon-move: 4px;
 }
 
 * {
