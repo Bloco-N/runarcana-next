@@ -139,7 +139,6 @@ const Container = styled.div`
         }
       }
     }
-
     .life-wrapper{
       grid-row-start: 1;
       grid-row-end: 2;
@@ -364,6 +363,39 @@ const Container = styled.div`
   .proficiency-card{
     grid-row-start: 2;
     grid-row-end: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    .proficiency{
+        font-size: 4rem;
+        font-family: 'Underdog', cursive;
+        height: 8rem;
+        width: 8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+        background-color: rgba(76, 76, 76, 0.25);
+        backdrop-filter: blur(0.2rem);
+    }
+    input{
+        all: unset;
+        appearance: none;
+        -moz-appearance: textfield;
+        font-family: 'Underdog', cursive;
+        height: 8rem;
+        width: 8rem;
+        text-align: center;
+        clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+        background-color: rgba(76, 76, 76, 0.25);
+        backdrop-filter: blur(0.2rem);
+        font-size: 4rem;
+        ::-webkit-inner-spin-button{
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
   }
 
 `
