@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Container = styled.div`
   height: 80%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   .c-container{
     height: 55rem;
@@ -15,6 +15,11 @@ const Container = styled.div`
       align-items: center;
       justify-content: center;
       gap: 3rem;
+    }
+    .map-wrapper{
+      top: 25%;
+      position: absolute;
+      left: 55%;
     }
     .moral{
       width: 50%;
@@ -67,17 +72,13 @@ const Container = styled.div`
       width: 50rem;
       height: auto;
       position: absolute;
-      top: 25%;
-      left: 55%;
       opacity: 0.5;
       transition: 0.5s;
       z-index: -1;
     }
     .bandopolis-index{
       font-size: 20rem;
-      position: absolute;
-      right: 20%;
-      top: 30%;
+      margin-left: 20rem;
     }
     .origin{
       height: 8rem;
