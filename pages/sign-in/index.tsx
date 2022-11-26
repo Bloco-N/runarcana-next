@@ -38,14 +38,14 @@ const Container = styled.div`
 
 export default function SignIn() {
   const router = useRouter()
-  const { register, handleSubmit} = useForm<SignInSubmit>()
-  const [, setLoading]  = useContext(LoadingContext) as LoadingContextType
-  const [mutateFunction, { data, loading, error }] = useMutation<SignInResponse>(SIGN_IN, {errorPolicy:'all'})
-  const onSubmit = (data:SignInSubmit) => { mutateFunction({variables:{data}})}
+  const { register, handleSubmit } = useForm<SignInSubmit>()
+  const [, setLoading] = useContext(LoadingContext) as LoadingContextType
+  const [mutateFunction, { data, loading, error }] = useMutation<SignInResponse>(SIGN_IN, { errorPolicy: 'all' })
+  const onSubmit = (data: SignInSubmit) => { mutateFunction({ variables: { data } }) }
 
   useEffect(() => {
-    if(data){
-      const { signIn:{token, user}} = data
+    if (data) {
+      const { signIn: { token, user } } = data
       localStorage.setItem('token', token)
       localStorage.setItem('user', JSON.stringify(user))
       router.push('/')
@@ -58,12 +58,12 @@ export default function SignIn() {
 
   return (
     <Container>
-      { error ? <ErrorModal message={error.message}/> : ''}
+      {error ? <ErrorModal message={error.message} /> : ''}
       <Card>
         <h2>Codex</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Input {...register('username', {required:true})} placeholder="Invocador" />
-          <Input {...register('password', {required:true})} placeholder="Senha" type="password" />
+          <Input {...register('username', { required: true })} placeholder="Invocador" />
+          <Input {...register('password', { required: true })} placeholder="Senha" type="password" />
           <Button>Entrar</Button>
           <p>Ainda não possui um codex?  <Link href='/sign-up'>Crie o seu aqui</Link></p>
         </form>
