@@ -279,6 +279,7 @@ const Container = styled.div`
         border: solid 0.1rem var(--secondary);
         padding: 1rem;
         border-radius: 1rem;
+        font-weight: bold;
         .skill-value{
           font-family: 'Underdog', cursive;
         }
