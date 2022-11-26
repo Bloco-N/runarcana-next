@@ -205,6 +205,14 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    h2{
+      background: linear-gradient(45deg, var(--gradient-color-one) 0%, var(--gradient-color-two) 100%);
+      background-size: 400%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: gradient 2s ease infinite;
+      color: transparent;
+    }
     p{
       width: 80%;
       display: flex;
