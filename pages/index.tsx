@@ -72,21 +72,21 @@ export default function Home() {
   const [modalOpen, setModalOpen] = useState(false)
   const [characterId, setCharacterId] = useState(1)
   const token = localStorage.getItem('token')
-  const [, setLoading]  = useContext(LoadingContext) as LoadingContextType
-  const {loading, data} = useQuery<UserInfoHome>(USER_CHARACTERS_HOME, {
-    context:{
-      headers:{
+  const [, setLoading] = useContext(LoadingContext) as LoadingContextType
+  const { loading, data } = useQuery<UserInfoHome>(USER_CHARACTERS_HOME, {
+    context: {
+      headers: {
         Authorization: "Bearer " + token
       }
     },
-    fetchPolicy: "no-cache" 
+    fetchPolicy: "no-cache"
   })
 
   const handleCreateCharacter = () => {
     router.push('create-character')
   }
 
-  const handleExlude = (e:React.MouseEvent<HTMLElement>) => {
+  const handleExlude = (e: React.MouseEvent<HTMLElement>) => {
     const target = e.target as HTMLElement
     setCharacterId(Number(target.id))
     setModalOpen(true)
@@ -102,27 +102,27 @@ export default function Home() {
     setLoading(loading)
   }, [loading, setLoading])
 
-  if(user){
-      return (
-        <Container>
-          {modalOpen ? <ConfirmExcludeCharacterModal characterId={characterId} setIsOpen={setModalOpen}/> : ''}
-          <h1>Bem vindo Invocador</h1>
-          <h2>Personagens</h2>
-            <div className='c-characters'>
-              {data ? data.userInfo.characters.map(item => (
-                <Card id={String(item.id)} className='grow-up' key={item.id}>
-                  <Image onClick={handleExlude} id={String(item.id)} className='exclude-icon' src={isDark ? excludeIcon : excludeLightIcon} alt="exclude icon" />
-                  <span id={String(item.id)} onClick={handleClickCard}>{item.name}</span>
-                </Card>
-              )) : ''}
-              <Button onClick={handleCreateCharacter}>+</Button>
-          </div>
+  if (user) {
+    return (
+      <Container>
+        {modalOpen ? <ConfirmExcludeCharacterModal characterId={characterId} setIsOpen={setModalOpen} /> : ''}
+        <h1>Bem vindo Invocador</h1>
+        <h2>Personagens</h2>
+        <div className='c-characters'>
+          {data ? data.userInfo.characters.map(item => (
+            <Card id={String(item.id)} className='grow-up' key={item.id}>
+              <Image onClick={handleExlude} id={String(item.id)} className='exclude-icon' src={isDark ? excludeIcon : excludeLightIcon} alt="exclude icon" />
+              <span id={String(item.id)} onClick={handleClickCard}>{item.name}</span>
+            </Card>
+          )) : ''}
+          <Button onClick={handleCreateCharacter}>+</Button>
+        </div>
 
 
 
-        </Container>
-      )
+      </Container>
+    )
   }
 
-  
+
 }

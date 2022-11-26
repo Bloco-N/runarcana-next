@@ -225,7 +225,7 @@ export default function CharacterDashBoard() {
           <Image className='map' id="11" src={isDark ? targonImg : targonLightImg} alt='targon' />
           <Image className='map' src={isDark ? restImg : restLightImg} alt='resto' />
           <h1 className="bandopolis-index">?</h1>
-          <p className='region-name'>{character?.Region.name.toLocaleLowerCase()}</p>
+          <span className='region-name'>{character?.Region.name.toLocaleLowerCase()}</span>
         </div>
       </Card>
       <Card className='attributes-card'>

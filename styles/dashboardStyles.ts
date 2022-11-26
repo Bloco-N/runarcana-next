@@ -43,8 +43,6 @@ const Container = styled.div`
         border-radius: 1rem;
         top: 60%;
         display: inline;
-        background-color: var(--secondary);
-        color: var(--primary);
       }
     }
   }

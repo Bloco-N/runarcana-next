@@ -44,7 +44,7 @@ const Container = styled.div`
       height: 1rem;
     }
     .selector-button{
-      border-radius: 50%;
+      /* border-radius: 50%; */
       height: 1rem;
       width: 1rem;
       display: flex;
