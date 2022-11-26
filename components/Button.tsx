@@ -40,9 +40,9 @@ const Button = (props: ButtonProps) => {
   const isDark = useDarkTheme()
   return (
     <Container isDark={isDark} {...props}>
-      <p>
-        {props.children}
-      </p>
+
+      {props.children}
+
     </Container>
   );
 };

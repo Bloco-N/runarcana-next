@@ -28,15 +28,12 @@ const Container = styled.nav`
     cursor: pointer;
     :hover{
       opacity: 1;
-      text-shadow:
-        0 0 7px var(--primary),
-        0 0 10px var(--primary),
-        0 0 21px var(--primary),
-        0 0 42px white,
-        0 0 82px white,
-        0 0 92px white,
-        0 0 102px white,
-        0 0 151px white;
+      background: linear-gradient(45deg, var(--gradient-color-one) 0%, var(--gradient-color-two) 100%);
+      background-size: 400%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: gradient 2s ease infinite;
+      color: transparent;
     }
   }
 `

@@ -43,7 +43,7 @@ const Container = styled.div`
       gap: 2rem;
       height: 1rem;
     }
-    button{
+    .selector-button{
       border-radius: 50%;
       height: 1rem;
       width: 1rem;
@@ -74,7 +74,6 @@ const Container = styled.div`
       position: absolute;
       opacity: 0.5;
       transition: 0.5s;
-      z-index: -1;
     }
     .bandopolis-index{
       font-size: 20rem;
@@ -98,8 +97,8 @@ const Container = styled.div`
     .description{
       height: 50rem;
       position: absolute;
-      top: 18%;
-      right: 15%;
+      top: 30%;
+      right: 18%;
       color: var(--secondary);
       width: 35rem;
       display: flex;
@@ -117,8 +116,8 @@ const Container = styled.div`
         }
       }
       &.pasts{
-        right: 10%;
-        top: 5%;
+        right: 18%;
+        top: 15%;
       }
       &.morals{
         top: 30%;
@@ -142,14 +141,14 @@ const Container = styled.div`
       opacity: 1;
       height: 25rem;
       width: 25rem;
-      top: 6%;
-      right: 2%;
+      top: 20%;
+      right: 10%;
     }
     .class-details{
       position: absolute;
 
-      top:20%;
-      right: 15%;
+      top:25%;
+      right: 18%;
       padding: 2rem;
       width: 30rem;
       border-radius: 1rem;
@@ -213,30 +212,15 @@ const Container = styled.div`
       gap: 1rem;
     }
   }
-  span{
-    user-select: none;
-  }
-  span.next{
-    cursor: pointer;
+  button.prev{
     position: absolute;
-    bottom: 0;
-    right: 0;
-    opacity: 0.5;
-    transition: 0.5s;
-    :hover{
-      opacity: 1;
-    }
+    bottom: 15%;
+    left: 10%;
   }
-  span.prev{
-    cursor: pointer;
+  button.next{
     position: absolute;
-    bottom: 0;
-    left: 0;
-    opacity: 0.5;
-    transition: 0.5s;
-    :hover{
-      opacity: 1;
-    }
+    bottom: 15%;
+    right: 10%;
   }
 
 `

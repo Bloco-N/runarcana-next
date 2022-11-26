@@ -14,40 +14,41 @@ import { useRouter } from 'next/router';
 import LoadingContext from '../../contexts/LoadingContext';
 import LoadingContextType from '../../types/LoadingContextType';
 import Container from '../../styles/createCharacterStyles';
+import Button from '../../components/Button';
 
-export default function CreateCharacter(){
-  const [, setLoading]  = useContext(LoadingContext) as LoadingContextType
+export default function CreateCharacter() {
+  const [, setLoading] = useContext(LoadingContext) as LoadingContextType
   const router = useRouter()
-  const [mutateFunction, {loading}] = useMutation(CREATE_CHARACTER, {errorPolicy:'all'})
+  const [mutateFunction, { loading }] = useMutation(CREATE_CHARACTER, { errorPolicy: 'all' })
   const inputs = [RegionInput, OriginInput, RunarcanaClassInput, PastInput, MoralInput, CharacterNameInput]
   const [currentInput, setCurrentInput] = useState(0)
   const [characterSubmit, setCharacterSubmit] = useState<CreateCharacterSubmit>({
-    regionId:1,
-    originId:1,
-    pastId:1,
-    runarcanaClassId:1,
-    essence:'',
-    expression:'',
-    exaltation:'',
-    name:''
+    regionId: 1,
+    originId: 1,
+    pastId: 1,
+    runarcanaClassId: 1,
+    essence: '',
+    expression: '',
+    exaltation: '',
+    name: ''
   })
   const handleNext = () => {
-    if(currentInput === inputs.length - 1) {
+    if (currentInput === inputs.length - 1) {
       const token = localStorage.getItem('token')
       mutateFunction({
-      variables:{data:characterSubmit},
-      context:{
-        headers:{
-          authorization: 'Bearer ' + token
+        variables: { data: characterSubmit },
+        context: {
+          headers: {
+            authorization: 'Bearer ' + token
+          }
         }
-      }
-    })
+      })
       router.push('/')
     }
     setCurrentInput(currentInput + 1)
   }
   const handlePrevious = () => {
-    if(currentInput === 0) return
+    if (currentInput === 0) return
     setCurrentInput(currentInput - 1)
   }
 
@@ -55,16 +56,16 @@ export default function CreateCharacter(){
     setLoading(loading)
   }, [loading, setLoading])
 
-  return(
+  return (
     <Container>
-      <div className="grow-up c-container">
+      <div className="c-container">
         <h1>Inserindo dados no codex</h1>
         <CharacterSubmitContext.Provider value={[characterSubmit, setCharacterSubmit]}>
-          <InputsWrapper currentInput={currentInput}/>
-          <span className='prev' onClick={handlePrevious}>anterior</span>
-          <span className='next' onClick={handleNext}>próximo</span>
+          <InputsWrapper currentInput={currentInput} />
+          <Button className='prev' onClick={handlePrevious}>anterior</Button>
+          <Button className='next' onClick={handleNext}>próximo</Button>
         </CharacterSubmitContext.Provider>
-        
+
       </div>
     </Container>
   )
