@@ -21,6 +21,10 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
   margin-top: -5.4%;
+  >div{
+    background-color: var(--secondary);
+    color: var(--primary);
+  }
   .content{
     display: flex;
     flex-direction: column;
@@ -34,17 +38,17 @@ const Container = styled.div`
   }
 `
 
-const ConfirmExcludeCharacterModal = (props:ConfirmModalProps) => {
+const ConfirmExcludeCharacterModal = (props: ConfirmModalProps) => {
   const router = useRouter()
-  const [mutateFunction] = useMutation(DELETE_CHARACTER, {errorPolicy:'all'})
+  const [mutateFunction] = useMutation(DELETE_CHARACTER, { errorPolicy: 'all' })
   const handleDelete = () => {
     const token = localStorage.getItem('token')
     mutateFunction({
-      variables:{
+      variables: {
         deleteCharacterId: props.characterId
       },
-      context:{
-        headers:{
+      context: {
+        headers: {
           authorization: 'Bearer ' + token
         }
       }
@@ -54,11 +58,11 @@ const ConfirmExcludeCharacterModal = (props:ConfirmModalProps) => {
   return (
     <Container>
       <Card className='content'>
-          <h2>Deseja realmente excluir esse personagem do codex?</h2>
-          <div className="buttons">
-            <Button onClick={handleDelete}>Sim</Button>
-            <Button onClick={() => props.setIsOpen(false)}>Não</Button>
-          </div>
+        <h2>Deseja realmente excluir esse personagem do codex?</h2>
+        <div className="buttons">
+          <Button onClick={handleDelete}>Sim</Button>
+          <Button onClick={() => props.setIsOpen(false)}>Não</Button>
+        </div>
       </Card>
     </Container>
   );

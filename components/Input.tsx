@@ -17,9 +17,12 @@ const Container = styled.input`
   animation: gradient 2s ease infinite;
   color: transparent;
   padding-bottom: 1rem;
-  border-bottom: 0.1rem solid var(--secondary);
+  border-bottom: 0.2rem solid var(--secondary);
   font-size: 2rem;
+  opacity: 0.7;
+  caret-color: var(--gradient-color-one);
   :focus{
+    opacity: 1;
     border-image-source: linear-gradient(45deg, var(--gradient-color-one) 0%, var(--gradient-color-two) 100%);
     border-image-slice: 1;
   }

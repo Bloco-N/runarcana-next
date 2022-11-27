@@ -1,7 +1,7 @@
 import { useQuery, useMutation } from '@apollo/client';
 import Image from 'next/image';
 import { useRouter } from "next/router"
-import { ChangeEvent, Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
+import React, { ChangeEvent, Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
 import Card from '../../components/Card';
 import LoadingContext from '../../contexts/LoadingContext';
 import { USER_CHARACTER_DASHBOARD } from '../../gql/querys';
@@ -32,7 +32,7 @@ import zaumLightImg from "../../public/maps/light/zaum.svg"
 import shadowLightImg from "../../public/maps/light/sombras.svg"
 import { modifier, proficiency } from '../../utils/attributeFunctios';
 import ThreeWaySwitch from '../../components/ThreeWaySwitch';
-import { UPDATE_CHARACTER_ATTRIBUTES, UPDATE_CHARACTER_PROFICIENCY } from '../../gql/mutations';
+import { UPDATE_CHARACTER_ATTRIBUTES, UPDATE_CHARACTER_HP, UPDATE_CHARACTER_PROFICIENCY } from '../../gql/mutations';
 import Container from '../../styles/dashboardStyles';
 
 export default function CharacterDashBoard() {
@@ -54,6 +54,7 @@ export default function CharacterDashBoard() {
   })
   const [mutateFunctionProficiency, { loading: loadingProficiency }] = useMutation(UPDATE_CHARACTER_PROFICIENCY, { errorPolicy: 'all' })
   const [mutateFunctionAttributes, { loading: loadingAttributes }] = useMutation(UPDATE_CHARACTER_ATTRIBUTES, { errorPolicy: 'all' })
+  const [mutateFunctionHp, { loading: loadingHp }] = useMutation(UPDATE_CHARACTER_HP, { errorPolicy: 'all' })
   const [character, setCharacter] = useState<Character>();
   const [skills, setSkills] = useState<Skills>()
   const [skillsValue, setSkillsValue] = useState<SkillsValues>()
@@ -70,6 +71,10 @@ export default function CharacterDashBoard() {
   useEffect(() => {
     setLoading(loading)
   }, [loading, setLoading])
+
+  useEffect(() => {
+    setLoading(loadingHp)
+  }, [loadingHp, setLoading])
 
   useEffect(() => {
     setLoading(loadingProficiency)
@@ -203,13 +208,50 @@ export default function CharacterDashBoard() {
     setAttributes({ ...aux })
   }
 
+  const handleCurrentHpChange = (e: React.ChangeEvent) => {
+    const target = e.target as HTMLInputElement
+    if (character && Number(target.value) > (character.classHpBase as number + modifiers.constitution)) {
+      target.value = String(character.classHpBase as number + modifiers.constitution)
+    }
+    mutateFunctionHp({
+      variables: {
+        data: {
+          characterId: Number(id),
+          currentHp: Number(target.value)
+        }
+      },
+      context: {
+        headers: {
+          authorization: 'Bearer ' + token
+        }
+      }
+    })
+  }
+
+  const handleBonusHpChange = (e: React.ChangeEvent) => {
+    const target = e.target as HTMLInputElement
+    mutateFunctionHp({
+      variables: {
+        data: {
+          characterId: Number(id),
+          bonusHp: Number(target.value)
+        }
+      },
+      context: {
+        headers: {
+          authorization: 'Bearer ' + token
+        }
+      }
+    })
+  }
+
   return (
     <Container>
       <Card className='infos-card'>
         <p>nome: {character?.name.toLocaleLowerCase()}</p>
         <p>origem: {character?.Origin.name.toLocaleLowerCase()}</p>
         <p>passado: {character?.Past.name.toLocaleLowerCase()}</p>
-        <p>classe: {character?.CharacterRunarcanaClass[0].RunarcanaClass.name.toLocaleLowerCase()}</p>
+        <p>classe: {character?.CharacterRunarcanaClasses[0].RunarcanaClass.name.toLocaleLowerCase()}</p>
       </Card>
       <Card className='region-card'>
         <div className="map-wrapper">
@@ -282,15 +324,15 @@ export default function CharacterDashBoard() {
         <div className="life-wrapper">
           <p>pontos de vida</p>
           <div className='wrapper-current' aria-label="vida atual" data-balloon-pos="down">
-            <input min={0} max={50} className="current" name='current-life' defaultValue={0} type='number' />
+            <input onChange={e => handleCurrentHpChange(e)} max={character?.classHpBase as number + modifiers.constitution} className="current" name='current-life' defaultValue={character?.currentHp} type='number' />
           </div>
           <div aria-label="vida total" data-balloon-pos="down">
             <div className="life-count">
-              10
+              {character?.classHpBase as number + modifiers.constitution}
             </div>
           </div>
           <div className='wrapper-extra' aria-label="vida extra" data-balloon-pos="down">
-            <input min={0} max={50} className="extra" name='current-life' defaultValue={0} type='number' />
+            <input onChange={e => handleBonusHpChange(e)} min={0} max={50} className="extra" name='current-life' defaultValue={character?.bonusHp} type='number' />
           </div>
 
         </div>
@@ -590,7 +632,7 @@ export default function CharacterDashBoard() {
       </Card>
       <Card className='proficiency-card'>
         <div aria-label="bônus de proeficiência" data-balloon-pos="down">
-          <div className="proficiency">10</div>
+          <div className="proficiency">{character?.proficiencyBonus}</div>
         </div>
         <div aria-label="inspiração" data-balloon-pos="down">
           <input min={0} max={50} defaultValue={0} name='inspiration' className='attribute-value' type="number" />

@@ -27,7 +27,7 @@ body {
 }
 
 span {
-  background: linear-gradient(45deg, var(--gradient-color-one) 0%, var(--gradient-color-two) 100%);
+  background: var(--secondary);
   color: var(--primary);
   padding: 1rem;
   border-radius: 1rem;

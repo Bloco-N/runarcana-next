@@ -25,6 +25,9 @@ query Query($charId: Float) {
         id
         name
       }
+      bonusHp
+      classHpBase
+      currentHp
       wisdomSavingThrow
       wisdom
       tecnology
@@ -60,7 +63,7 @@ query Query($charId: Float) {
       arcana
       animalHandling
       acrobatics
-      CharacterRunarcanaClass {
+      CharacterRunarcanaClasses {
         RunarcanaClass {
           name
         }

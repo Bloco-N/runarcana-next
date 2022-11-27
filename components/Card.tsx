@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import useDarkTheme from '../hooks/useDarkTheme';
 
 type CardProps = {
-    id?: string
-    children: React.ReactNode,
-    className?: string
-    onClick?: React.MouseEventHandler
+  id?: string
+  children: React.ReactNode,
+  className?: string
+  onClick?: React.MouseEventHandler
 }
 
 type ContainerProps = {
-    isDark: boolean
+  isDark: boolean
 }
 
 const Container = styled.div<ContainerProps>`
@@ -22,12 +22,12 @@ const Container = styled.div<ContainerProps>`
 `
 
 const Card = (props: CardProps) => {
-    const isDark = useDarkTheme()
-    return (
-        <Container isDark={isDark} {...props}>
-            {props.children}
-        </Container>
-    );
+  const isDark = useDarkTheme()
+  return (
+    <Container isDark={isDark} {...props}>
+      {props.children}
+    </Container>
+  );
 };
 
 export default Card;

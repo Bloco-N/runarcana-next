@@ -52,11 +52,20 @@ const UPDATE_CHARACTER_ATTRIBUTES = gql`
 }
 `
 
+const UPDATE_CHARACTER_HP = gql`
+  mutation UpdateCurrentHp($data: CharacterUpdateHpInputData!) {
+    updateCurrentHp(data: $data) {
+      message
+    }
+  }
+`
+
 export {
   SIGN_UP,
   SIGN_IN,
   CREATE_CHARACTER,
   DELETE_CHARACTER,
   UPDATE_CHARACTER_PROFICIENCY,
-  UPDATE_CHARACTER_ATTRIBUTES
+  UPDATE_CHARACTER_ATTRIBUTES,
+  UPDATE_CHARACTER_HP
 }

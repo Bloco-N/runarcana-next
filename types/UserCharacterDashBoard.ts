@@ -1,6 +1,6 @@
 type RunarcanaClass = {
   RunarcanaClass: {
-    name:string 
+    name: string
   }
 }
 
@@ -9,7 +9,7 @@ export const SkillsAttributesMap = {
   arcana: 'intelligence',
   athletics: 'strength',
   performance: 'charisma',
-  deception: 'charisma', 
+  deception: 'charisma',
   stealth: 'dexterity',
   history: 'intelligence',
   intimidation: 'charisma',
@@ -90,32 +90,35 @@ export type Skills = {
 
 export type Attributes = {
   strength: number
-  dexterity:number
+  dexterity: number
   constitution: number
-  intelligence:number
-  wisdom:number
-  charisma:number
+  intelligence: number
+  wisdom: number
+  charisma: number
 }
 
 export type Character = {
   name: string
-  Origin:{
-    name:string
-  }
-  Past:{
+  Origin: {
     name: string
   }
-  Region:{
-    id:number
-    name:string
+  Past: {
+    name: string
   }
+  Region: {
+    id: number
+    name: string
+  }
+  bonusHp: number
+  classHpBase: number
+  currentHp: number
   proficiencyBonus: number
   strength: number
-  dexterity:number
+  dexterity: number
   constitution: number
-  intelligence:number
-  wisdom:number
-  charisma:number
+  intelligence: number
+  wisdom: number
+  charisma: number
   acrobatics: string
   arcana: string
   athletics: string
@@ -141,12 +144,12 @@ export type Character = {
   intelligenceSavingThrow: string
   wisdomSavingThrow: string
   charismaSavingThrow: string
-  CharacterRunarcanaClass : RunarcanaClass []
+  CharacterRunarcanaClasses: RunarcanaClass[]
 }
 
-type UserCharacterDashboard ={
-  userInfo:{
-    characters: Character []
+type UserCharacterDashboard = {
+  userInfo: {
+    characters: Character[]
   }
 }
 
