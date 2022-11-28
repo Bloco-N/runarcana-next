@@ -1,16 +1,14 @@
 type Past = {
-  id:number,
+  id: number,
   description: string,
   languages: string,
   name: string,
-  professions: string, 
+  professions: string,
   skills: string
 }
 
 type ListAllPasts = {
-  listAllPasts:{
-    pasts: Past []
-  }
+  listAllPasts: Past[]
 }
 
 export default ListAllPasts

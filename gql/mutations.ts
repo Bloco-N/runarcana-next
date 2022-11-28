@@ -37,27 +37,12 @@ const DELETE_CHARACTER = gql`
 }
 `
 
-const UPDATE_CHARACTER_PROFICIENCY = gql`
-  mutation UpdateCharacterProficiency($data: CharacterUpdateProficiencyInputData!) {
-    updateCharacterProficiency(data: $data) {
-      message
-    }
-  }
-`
-const UPDATE_CHARACTER_ATTRIBUTES = gql`
-  mutation UpdateCharacterAttributes($data: CharacterUpdateAttributesInputData!) {
-  updateCharacterAttributes(data: $data) {
+const UPDATE_CHARACTER = gql`
+  mutation UpdateCharacter($data: CharacterUpdateManyFieldsInputData!) {
+  updateCharacter(data: $data) {
     message
   }
 }
-`
-
-const UPDATE_CHARACTER_HP = gql`
-  mutation UpdateCurrentHp($data: CharacterUpdateHpInputData!) {
-    updateCurrentHp(data: $data) {
-      message
-    }
-  }
 `
 
 export {
@@ -65,7 +50,5 @@ export {
   SIGN_IN,
   CREATE_CHARACTER,
   DELETE_CHARACTER,
-  UPDATE_CHARACTER_PROFICIENCY,
-  UPDATE_CHARACTER_ATTRIBUTES,
-  UPDATE_CHARACTER_HP
+  UPDATE_CHARACTER
 }

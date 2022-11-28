@@ -1,144 +1,146 @@
 import { gql } from '@apollo/client'
 
 const USER_CHARACTERS_HOME = gql`
-  query UserInfo {
-    userInfo {
-      characters {
-        id
-        name
-      }
-    }
-  }
-`
-const USER_CHARACTER_DASHBOARD = gql`
-query Query($charId: Float) {
-  userInfo(charId: $charId) {
-    characters {
+query Query {
+  userInfo {
+    Characters {
+      id
       name
-      Origin {
-        name
-      }
-      Past {
-        name
-      }
-      Region{
-        id
-        name
-      }
-      bonusHp
-      classHpBase
-      currentHp
-      wisdomSavingThrow
-      wisdom
-      tecnology
-      survival
-      strengthSavingThrow
-      strength
-      stealth
-      sleightOfHand
-      religion
-      proficiencyBonus
-      persuasion
-      performance
-      perception
-      nature
-      medicine
-      investigation
-      intimidation
-      intelligenceSavingThrow
-      intelligence
-      insight
-      history
-      expression
-      exaltation
-      essence
-      dexteritySavingThrow
-      dexterity
-      deception
-      constitutionSavingThrow
-      constitution
-      charismaSavingThrow
-      charisma
-      athletics
-      arcana
-      animalHandling
-      acrobatics
-      CharacterRunarcanaClasses {
-        RunarcanaClass {
-          name
-        }
-      }
     }
   }
 }
 `
+const USER_CHARACTER_DASHBOARD = gql`
+  query Query($where: CharacterWhereInput) {
+    userInfo {
+      Characters(where: $where) {
+        wisdomSavingThrow
+        wisdom
+        userId
+        tecnology
+        survival
+        strengthSavingThrow
+        strength
+        stealth
+        sleightOfHand
+        religion
+        regionId
+        persuasion
+        proficiencyBonus
+        performance
+        perception
+        originId
+        pastId
+        nature
+        name
+        medicine
+        lineageId
+        level
+        investigation
+        intimidation
+        intelligenceSavingThrow
+        intelligence
+        insight
+        id
+        history
+        expression
+        exaltation
+        essence
+        dexteritySavingThrow
+        dexterity
+        deception
+        currentHp
+        constitutionSavingThrow
+        constitution
+        classHpBase
+        charismaSavingThrow
+        charisma
+        bonusHp
+        athletics
+        arcana
+        animalHandling
+        acrobatics
+        Region {
+          name
+        }
+        Past {
+          name
+        }
+        Origin {
+          name
+        }
+        Lineage {
+          name
+        }
+        Characteristics {
+          name
+          info
+        }
+      }
+    }
+  }
+  `
 
 const LIST_ALL_REGIONS = gql`
   query Query {
     listAllRegions {
-      regions {
-        name
-        id
-      }
+      name
+      id
     }
   }
 `
 
 const LIST_ALL_CLASSES = gql`
-  query RunarcanaClasses {
-    listAllRClasses {
-      runarcanaClasses {
-        name
-        id
-        description
-        primaryAbility
-        savingThrows
-      }
-    }
+query Query {
+  listAllRunarcanaClass {
+    name
+    savingThrows
+    primaryAbility
+    description
+    id
   }
+}
 `
 
 const LIST_ALL_PASTS = gql`
   query Pasts {
     listAllPasts {
-      pasts {
-        id
-        name
-        description
-        skills
-        professions
-        languages
-      }
+      id
+      name
+      description
+      skills
+      professions
+      languages
     }
   }
 `
 
 const GET_REGION_BY_ID = gql`
-  query GetRegionById($getRegionByIdId: Float!) {
-    getRegionById(id: $getRegionByIdId) {
+  query Query($where: RegionWhereInput) {
+    listAllRegions(where: $where) {
       name
     }
   }
 `
 
 const GET_ORIGIN_BY_ID = gql`
-  query GetOriginById($getOriginByIdId: Float!) {
-    getOriginById(id: $getOriginByIdId) {
+  query Query($where: OriginWhereInput) {
+    listAllOrigins(where: $where) {
       name
     }
   }
 `
 
 const GET_CLASS_BY_ID = gql`
-  query GetRClassById($getRClassByIdId: Float!) {
-    getRClassById(id: $getRClassByIdId) {
+  query Query($where: RunarcanaClassWhereInput) {
+    listAllRunarcanaClass(where: $where) {
       name
     }
   }
 `
 const GET_PAST_BY_ID = gql`
-  query GetPastById($getPastByIdId: Float!) {
-    getPastById(id: $getPastByIdId) {
+  query Query($where: PastWhereInput) {
+    listAllPasts(where: $where) {
       name
     }
   }

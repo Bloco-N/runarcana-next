@@ -40,26 +40,25 @@ const PastInput = () => {
     setLoading(loading)
   }, [loading, setLoading])
 
-  console.log(data)
   return (
     <>
       <h2>Passado</h2>
       <p>Toda história de um campeão tem seu início. O passado irá definir como ele viveu, porque se tornou um aventureiro e qual seu lugar em runeterra. Seu combatente pode ter sido um corajoso cavaleiro ou um soldado veterano. Seu mercurial talvez tenha participado de uma guilda de ladrões ou entreteve o público como um bufão.</p>
       <section className="c-selection">
         <Button onClick={leftHandle} className="selector-button left">➤</Button>
-        <select value={String(characterSubmit.pastId)} name="" id="">
-          {data?.listAllPasts.pasts.map(past => (
+        <select defaultValue={String(characterSubmit.pastId)} name="" id="">
+          {data?.listAllPasts.map(past => (
             <option key={past.id} value={String(past.id)}>{past.name}</option>
           ))}
         </select>
         <Button className='selector-button' onClick={rightHandle}>➤</Button>
         <div className="description pasts">
-          <h2>{data?.listAllPasts.pasts[Number(characterSubmit.pastId) - 1].name}</h2>
+          <h2>{data?.listAllPasts[Number(characterSubmit.pastId) - 1].name}</h2>
           <div>
-            <p>{data?.listAllPasts.pasts[Number(characterSubmit.pastId) - 1].description}</p>
-            {data?.listAllPasts.pasts[Number(characterSubmit.pastId) - 1].languages ? <p>Idioma: {data?.listAllPasts.pasts[Number(characterSubmit.pastId) - 1].languages}</p> : ''}
-            {data?.listAllPasts.pasts[Number(characterSubmit.pastId) - 1].professions ? <p>Ofício: {data?.listAllPasts.pasts[Number(characterSubmit.pastId) - 1].professions}</p> : ''}
-            {data?.listAllPasts.pasts[Number(characterSubmit.pastId) - 1].skills ? <p>Proeficiências: {data?.listAllPasts.pasts[Number(characterSubmit.pastId) - 1].skills}</p> : ''}
+            <p>{data?.listAllPasts[Number(characterSubmit.pastId) - 1].description}</p>
+            {data?.listAllPasts[Number(characterSubmit.pastId) - 1].languages ? <p>Idioma: {data?.listAllPasts[Number(characterSubmit.pastId) - 1].languages}</p> : ''}
+            {data?.listAllPasts[Number(characterSubmit.pastId) - 1].professions ? <p>Ofício: {data?.listAllPasts[Number(characterSubmit.pastId) - 1].professions}</p> : ''}
+            {data?.listAllPasts[Number(characterSubmit.pastId) - 1].skills ? <p>Proeficiências: {data?.listAllPasts[Number(characterSubmit.pastId) - 1].skills}</p> : ''}
           </div>
         </div>
       </section>

@@ -36,7 +36,7 @@ const RegionInput = () => {
   const isDark = useDarkTheme()
   const [characterSubmit, setCharacterSubmit] = useContext(CharacterSubmitContext) as CharacterSubmitContextType
   const [, setLoading] = useContext(LoadingContext) as LoadingContextType
-  const { loading, error, data } = useQuery<ListAllRegions>(LIST_ALL_REGIONS, {
+  const { loading, data } = useQuery<ListAllRegions>(LIST_ALL_REGIONS, {
     fetchPolicy: 'no-cache'
   })
   const leftHandle = () => {
@@ -90,8 +90,8 @@ const RegionInput = () => {
 
       <section className="c-selection">
         <Button onClick={leftHandle} className="selector-button left">➤</Button>
-        <select value={String(characterSubmit.regionId)} autoFocus name="Região">
-          {data?.listAllRegions.regions.map(region => (
+        <select defaultValue={String(characterSubmit.regionId)} autoFocus name="Região">
+          {data?.listAllRegions.map(region => (
             <option key={region.id} value={String(region.id)}>{region.name}</option>
           ))}
         </select>

@@ -48,25 +48,25 @@ const RunarcanaClassInput = () => {
       </p>
       <section className="c-selection">
         <Button onClick={leftHandle} className="selector-button left">➤</Button>
-        <select value={String(characterSubmit.runarcanaClassId)} autoFocus name="region">
-          {data?.listAllRClasses.runarcanaClasses.map(runarcanaClass => (
+        <select defaultValue={String(characterSubmit.runarcanaClassId)} autoFocus name="region">
+          {data?.listAllRunarcanaClass.map(runarcanaClass => (
             <option key={runarcanaClass.id} value={String(runarcanaClass.id)}>{runarcanaClass.name}</option>
           ))}
         </select>
         <Button className='selector-button' onClick={rightHandle}>➤</Button>
         <div className='class-details'>
           <div className='class-details-top'>
-            <p>{data?.listAllRClasses.runarcanaClasses[Number(characterSubmit.runarcanaClassId) - 1].description}</p>
+            <p>{data?.listAllRunarcanaClass[Number(characterSubmit.runarcanaClassId) - 1].description}</p>
           </div>
           <div>
             <div className='class-details-bottom'>
               <div>
                 Salvaguardas:
-                <p>{data?.listAllRClasses.runarcanaClasses[Number(characterSubmit.runarcanaClassId) - 1].savingThrows}</p>
+                <p>{data?.listAllRunarcanaClass[Number(characterSubmit.runarcanaClassId) - 1].savingThrows}</p>
               </div>
               <div>
                 Habilidades Primarias:
-                <p>{data?.listAllRClasses.runarcanaClasses[Number(characterSubmit.runarcanaClassId) - 1].primaryAbility}</p>
+                <p>{data?.listAllRunarcanaClass[Number(characterSubmit.runarcanaClassId) - 1].primaryAbility}</p>
               </div>
             </div>
           </div>

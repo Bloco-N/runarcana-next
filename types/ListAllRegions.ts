@@ -1,12 +1,11 @@
 type Region = {
-  id:number,
-  name:string
+  id: number,
+  name: string
 }
 
 type ListAllRegions = {
-  listAllRegions:{
-    regions: Region[]
-  }
+  listAllRegions: Region[]
+
 }
 
 export default ListAllRegions

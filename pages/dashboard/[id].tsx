@@ -32,7 +32,7 @@ import zaumLightImg from "../../public/maps/light/zaum.svg"
 import shadowLightImg from "../../public/maps/light/sombras.svg"
 import { modifier, proficiency } from '../../utils/attributeFunctios';
 import ThreeWaySwitch from '../../components/ThreeWaySwitch';
-import { UPDATE_CHARACTER_ATTRIBUTES, UPDATE_CHARACTER_HP, UPDATE_CHARACTER_PROFICIENCY } from '../../gql/mutations';
+import { UPDATE_CHARACTER } from '../../gql/mutations';
 import Container from '../../styles/dashboardStyles';
 
 export default function CharacterDashBoard() {
@@ -52,9 +52,7 @@ export default function CharacterDashBoard() {
     },
     fetchPolicy: "no-cache"
   })
-  const [mutateFunctionProficiency, { loading: loadingProficiency }] = useMutation(UPDATE_CHARACTER_PROFICIENCY, { errorPolicy: 'all' })
-  const [mutateFunctionAttributes, { loading: loadingAttributes }] = useMutation(UPDATE_CHARACTER_ATTRIBUTES, { errorPolicy: 'all' })
-  const [mutateFunctionHp, { loading: loadingHp }] = useMutation(UPDATE_CHARACTER_HP, { errorPolicy: 'all' })
+  const [mutateFunction, { loading: loadingUpdateCharacter }] = useMutation(UPDATE_CHARACTER, { errorPolicy: 'all' })
   const [character, setCharacter] = useState<Character>();
   const [skills, setSkills] = useState<Skills>()
   const [skillsValue, setSkillsValue] = useState<SkillsValues>()
@@ -73,16 +71,8 @@ export default function CharacterDashBoard() {
   }, [loading, setLoading])
 
   useEffect(() => {
-    setLoading(loadingHp)
-  }, [loadingHp, setLoading])
-
-  useEffect(() => {
-    setLoading(loadingProficiency)
-  }, [loadingProficiency, setLoading])
-
-  useEffect(() => {
-    setLoading(loadingAttributes)
-  }, [loadingAttributes, setLoading])
+    setLoading(loadingUpdateCharacter)
+  }, [loadingUpdateCharacter, setLoading])
 
   useEffect(() => {
     setCharacter(data?.userInfo.characters[0])
@@ -137,10 +127,10 @@ export default function CharacterDashBoard() {
         aux[key as keyof Attributes] = modifier(value)
       })
       setModifiers({ ...aux })
-      mutateFunctionAttributes({
+      mutateFunction({
         variables: {
           data: {
-            ...attributes,
+            charData: { ...attributes },
             id: Number(id)
           }
         },
@@ -151,14 +141,14 @@ export default function CharacterDashBoard() {
         }
       })
     }
-  }, [attributes, mutateFunctionAttributes, id, token])
+  }, [attributes, mutateFunction, id, token])
 
   useEffect(() => {
     if (skills) {
-      mutateFunctionProficiency({
+      mutateFunction({
         variables: {
           data: {
-            ...skills,
+            charData: { ...skills },
             id: Number(id)
           }
         },
@@ -176,7 +166,7 @@ export default function CharacterDashBoard() {
         setSkillsValue({ ...aux })
       }
     }
-  }, [skills, id, mutateFunctionProficiency, token, attributes, character])
+  }, [skills, id, mutateFunction, token, attributes, character])
 
   useEffect(() => {
     const img = document.getElementById(String(data?.userInfo.characters[0].Region.id) === '12' ? '9' : String(data?.userInfo.characters[0].Region.id))
@@ -213,11 +203,11 @@ export default function CharacterDashBoard() {
     if (character && Number(target.value) > (character.classHpBase as number + modifiers.constitution)) {
       target.value = String(character.classHpBase as number + modifiers.constitution)
     }
-    mutateFunctionHp({
+    mutateFunction({
       variables: {
         data: {
           characterId: Number(id),
-          currentHp: Number(target.value)
+          charData: { currentHp: Number(target.value) }
         }
       },
       context: {
@@ -230,11 +220,11 @@ export default function CharacterDashBoard() {
 
   const handleBonusHpChange = (e: React.ChangeEvent) => {
     const target = e.target as HTMLInputElement
-    mutateFunctionHp({
+    mutateFunction({
       variables: {
         data: {
           characterId: Number(id),
-          bonusHp: Number(target.value)
+          charData: { bonusHp: Number(target.value) }
         }
       },
       context: {

@@ -1,11 +1,11 @@
-type CharactersHome = {
-  id:number,
-  name:string
+type Characters = {
+  id: number,
+  name: string
 }
 
 type UserInfoHome = {
-  userInfo:{
-    characters: CharactersHome[]
+  userInfo: {
+    Characters: Characters[]
   }
 }
 

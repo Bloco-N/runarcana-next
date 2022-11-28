@@ -109,7 +109,7 @@ export default function Home() {
         <h1>Bem vindo Invocador</h1>
         <h2>Personagens</h2>
         <div className='c-characters'>
-          {data ? data.userInfo.characters.map(item => (
+          {data ? data.userInfo.Characters.map(item => (
             <Card id={String(item.id)} className='grow-up' key={item.id}>
               <Image onClick={handleExlude} id={String(item.id)} className='exclude-icon' src={isDark ? excludeIcon : excludeLightIcon} alt="exclude icon" />
               <span id={String(item.id)} onClick={handleClickCard}>{item.name}</span>
