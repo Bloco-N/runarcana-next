@@ -45,7 +45,7 @@ const CharacterNameInput = () => {
     variables: {
       "where": {
         "id": {
-          "equals": characterSubmit.runarcanaClassId
+          "equals": characterSubmit.pastId
         }
       }
     },

@@ -45,7 +45,9 @@ const ConfirmExcludeCharacterModal = (props: ConfirmModalProps) => {
     const token = localStorage.getItem('token')
     mutateFunction({
       variables: {
-        deleteCharacterId: props.characterId
+        "where": {
+          "id": props.characterId
+        }
       },
       context: {
         headers: {

@@ -35,8 +35,14 @@ export default function CreateCharacter() {
   const handleNext = () => {
     if (currentInput === inputs.length - 1) {
       const token = localStorage.getItem('token')
+      const { runarcanaClassId, ...charData } = characterSubmit
       mutateFunction({
-        variables: { data: characterSubmit },
+        variables: {
+          data: {
+            runarcanaClassId,
+            charData
+          }
+        },
         context: {
           headers: {
             authorization: 'Bearer ' + token

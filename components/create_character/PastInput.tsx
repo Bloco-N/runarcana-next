@@ -11,7 +11,7 @@ import LoadingContextType from '../../types/LoadingContextType';
 const PastInput = () => {
   const [characterSubmit, setCharacterSubmit] = useContext(CharacterSubmitContext) as CharacterSubmitContextType
   const [, setLoading] = useContext(LoadingContext) as LoadingContextType
-  const { loading, error, data } = useQuery<ListAllPasts>(LIST_ALL_PASTS, {
+  const { loading, data } = useQuery<ListAllPasts>(LIST_ALL_PASTS, {
     fetchPolicy: 'no-cache'
   })
   const leftHandle = () => {

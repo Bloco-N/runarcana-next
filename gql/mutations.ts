@@ -30,11 +30,11 @@ const CREATE_CHARACTER = gql`
 `
 
 const DELETE_CHARACTER = gql`
-  mutation DeleteCharacter($deleteCharacterId: Float!) {
-  deleteCharacter(id: $deleteCharacterId) {
-    message
+  mutation DeleteCharacter($where: CharacterWhereUniqueInput!) {
+    deleteCharacter(where: $where) {
+      message
+    }
   }
-}
 `
 
 const UPDATE_CHARACTER = gql`
