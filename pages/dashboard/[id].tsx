@@ -43,7 +43,11 @@ export default function CharacterDashBoard() {
   const [, setLoading] = useContext(LoadingContext) as LoadingContextType
   const { loading, data } = useQuery<UserCharacterDashboard>(USER_CHARACTER_DASHBOARD, {
     variables: {
-      charId: Number(id)
+      "where": {
+        "id": {
+          "equals": Number(id)
+        }
+      }
     },
     context: {
       headers: {
@@ -75,7 +79,7 @@ export default function CharacterDashBoard() {
   }, [loadingUpdateCharacter, setLoading])
 
   useEffect(() => {
-    setCharacter(data?.userInfo.characters[0])
+    setCharacter(data?.userInfo.Characters[0])
   }, [data])
 
   useEffect(() => {
@@ -122,17 +126,16 @@ export default function CharacterDashBoard() {
   useEffect(() => {
     const aux = {} as Attributes
     if (attributes) {
-      console.log(attributes)
       Object.entries(attributes).map(([key, value]) => {
         aux[key as keyof Attributes] = modifier(value)
       })
       setModifiers({ ...aux })
       mutateFunction({
         variables: {
-          data: {
-            charData: { ...attributes },
-            id: Number(id)
-          }
+          "where": {
+            "id": Number(id)
+          },
+          "data": attributes
         },
         context: {
           headers: {
@@ -147,10 +150,10 @@ export default function CharacterDashBoard() {
     if (skills) {
       mutateFunction({
         variables: {
-          data: {
-            charData: { ...skills },
-            id: Number(id)
-          }
+          "where": {
+            "id": Number(id)
+          },
+          "data": skills
         },
         context: {
           headers: {
@@ -169,7 +172,8 @@ export default function CharacterDashBoard() {
   }, [skills, id, mutateFunction, token, attributes, character])
 
   useEffect(() => {
-    const img = document.getElementById(String(data?.userInfo.characters[0].Region.id) === '12' ? '9' : String(data?.userInfo.characters[0].Region.id))
+    console.log(data)
+    const img = document.getElementById(String(data?.userInfo.Characters[0].Region.id) === '12' ? '9' : String(data?.userInfo.Characters[0].Region.id))
     if (!img) {
       const bandopolis = document.getElementsByClassName('bandopolis-index')
       bandopolis[0].classList.remove('none')
@@ -205,10 +209,10 @@ export default function CharacterDashBoard() {
     }
     mutateFunction({
       variables: {
-        data: {
-          characterId: Number(id),
-          charData: { currentHp: Number(target.value) }
-        }
+        "where": {
+          "id": Number(id)
+        },
+        "data": { currentHp: Number(target.value) }
       },
       context: {
         headers: {
@@ -222,10 +226,10 @@ export default function CharacterDashBoard() {
     const target = e.target as HTMLInputElement
     mutateFunction({
       variables: {
-        data: {
-          characterId: Number(id),
-          charData: { bonusHp: Number(target.value) }
-        }
+        "where": {
+          "id": Number(id)
+        },
+        "data": { bonusHp: Number(target.value) }
       },
       context: {
         headers: {

@@ -149,7 +149,7 @@ export type Character = {
 
 type UserCharacterDashboard = {
   userInfo: {
-    characters: Character[]
+    Characters: Character[]
   }
 }
 

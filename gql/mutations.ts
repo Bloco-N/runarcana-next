@@ -38,11 +38,11 @@ const DELETE_CHARACTER = gql`
 `
 
 const UPDATE_CHARACTER = gql`
-  mutation UpdateCharacter($data: CharacterUpdateManyFieldsInputData!) {
-  updateCharacter(data: $data) {
-    message
+  mutation UpdateCharacter($where: CharacterWhereUniqueInput!, $data: CharacterUpdateInput!) {
+    updateCharacter(where: $where, data: $data) {
+      message
+    }
   }
-}
 `
 
 export {

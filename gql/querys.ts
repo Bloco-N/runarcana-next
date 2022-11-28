@@ -72,9 +72,10 @@ const USER_CHARACTER_DASHBOARD = gql`
         Lineage {
           name
         }
-        Characteristics {
-          name
-          info
+        CharacterRunarcanaClasses {
+          RunarcanaClass {
+            name
+          }
         }
       }
     }
