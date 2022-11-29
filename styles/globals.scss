@@ -160,6 +160,7 @@ a:hover {
 .map-grow {
   opacity: 1 !important;
   transform: scale(1.1);
+  z-index: 2;
 }
 
 /* ===== Scrollbar CSS ===== */
