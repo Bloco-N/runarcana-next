@@ -12,6 +12,9 @@ const Container = styled.nav`
   gap: 3rem;
   padding: 4rem;
   width: 100%;
+  h3{
+    user-select: none;
+  }
   img{
     position: absolute;
     top: 50%;
@@ -49,7 +52,7 @@ const Nav = () => {
   }
   return (
     <Container>
-      {/* <Image src={isDark? codexIcon : codexIconLight} alt="codex icone"/> */}
+      <h3>Códice [runarcana] </h3>
       <Link href='/'>
         Home
       </Link>

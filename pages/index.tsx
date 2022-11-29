@@ -106,7 +106,6 @@ export default function Home() {
     return (
       <Container>
         {modalOpen ? <ConfirmExcludeCharacterModal characterId={characterId} setIsOpen={setModalOpen} /> : ''}
-        <h1>O Códice</h1>
         <h2>Personagens</h2>
         <div className='c-characters'>
           {data ? data.userInfo.Characters.map(item => (
