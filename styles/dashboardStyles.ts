@@ -363,9 +363,13 @@ const Container = styled.div`
     grid-row-start: 2;
     grid-row-end: 4;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     gap: 4rem;
+    p{
+      position: absolute;
+      top: 2rem;
+    }
     .proficiency{
         font-size: 4rem;
         font-family: 'Underdog', cursive;

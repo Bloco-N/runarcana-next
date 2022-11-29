@@ -9,6 +9,7 @@ type ProficiencyCardProps = {
 const ProficiencyCard = ({ character }: ProficiencyCardProps) => {
   return (
     <Card className='proficiency-card'>
+      <p>bônus de proeficiência / inspiração</p>
       <div aria-label="bônus de proeficiência" data-balloon-pos="down">
         <div className="proficiency">{character?.proficiencyBonus}</div>
       </div>
