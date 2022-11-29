@@ -64,9 +64,15 @@ const Nav = () => {
           Sair
         </button>
       ) : (
-        <Link href='/sign-in'>
-          Entrar
-        </Link>
+        <>
+          <Link href='/sign-in'>
+            Entrar
+          </Link>
+
+          <Link href='/sign-up'>
+            Crie seu Codex
+          </Link>
+        </>
       )}
       {user ? <span>{user.username} ({user.nickname})</span> : ''}
     </Container>
