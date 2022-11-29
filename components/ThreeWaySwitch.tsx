@@ -23,7 +23,6 @@ const Container = styled.div`
     }
     &.proficient{
       background-color: var(--secondary);
-      opacity: 0.7;
     }
     &.specialist{
       background: linear-gradient(45deg, var(--gradient-color-one) 0%, var(--gradient-color-two) 100%);
