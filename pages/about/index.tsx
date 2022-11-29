@@ -21,7 +21,7 @@ const Container = styled.div`
 export default function About() {
   return (
     <Container>
-      <h2>O melhor artefato para entrar no mundo de runeterra</h2>
+      <h2>A centelha</h2>
       <p>
         O mundo de runeterra é uma terra cheia de aventuras e magia. Um lugar que a maioria dos fãs de lol gostariam de estar envolvidos. Para os amantes de rpg de mesa isso passou a ser possível após a criação do livro de rpg <a href="#">runarcana</a> (iniciativa do <a href="#">@arddhu</a>). Com esse livro a criação de personagens e a ambientação de um rpg de mesa no mundo de runeterra passaram a ser muito mais fáceis pra quem gosta de jogar um bom d&d ou semelhantes.</p>
       <p>
