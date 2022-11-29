@@ -61,19 +61,24 @@ const USER_CHARACTER_DASHBOARD = gql`
         animalHandling
         acrobatics
         Region {
+          id
           name
         }
         Past {
+          id
           name
         }
         Origin {
+          id
           name
         }
         Lineage {
+          id
           name
         }
         CharacterRunarcanaClasses {
           RunarcanaClass {
+            id
             name
           }
         }
