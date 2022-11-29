@@ -37,27 +37,27 @@ const Container = styled.div`
 export default function SignUp() {
   const router = useRouter()
   const { register, handleSubmit } = useForm<SignUpSubmit>()
-  const [mutateFunction, { data, loading, error }] = useMutation(SIGN_UP, {errorPolicy:'all'})
-  const onSubmit = (data:SignUpSubmit) => { mutateFunction({variables:{data}})}
+  const [mutateFunction, { data, loading, error }] = useMutation(SIGN_UP, { errorPolicy: 'all' })
+  const onSubmit = (data: SignUpSubmit) => { mutateFunction({ variables: { data } }) }
 
   useEffect(() => {
-    if(data){
+    if (data) {
       router.push('/sign-in')
     }
   }, [data, router])
 
   return (
     <Container>
-      { error ? <ErrorModal message={error.message}/> : ''}
-      { loading ? <Loading/> : ''}
+      {error ? <ErrorModal message={error.message} /> : ''}
+      {loading ? <Loading /> : ''}
       <Card>
-        <h2>Crie seu codex</h2>
+        <h2>Crie seu códice</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Input {...register('username', {required: true})} placeholder="Invocador" />
-          <Input {...register('nickname', {required: true})} placeholder="Apelido" />
-          <Input {...register('password', {required: true})} placeholder="Senha" type="password" />
+          <Input {...register('username', { required: true })} placeholder="Invocador" />
+          <Input {...register('nickname', { required: true })} placeholder="Apelido" />
+          <Input {...register('password', { required: true })} placeholder="Senha" type="password" />
           <Button>Cadastro</Button>
-          <p>Já possui um codex?  <Link href='/sign-in'>Acesse o codex aqui</Link></p>  
+          <p>Já possui um códice?  <Link href='/sign-in'>Acesse o códice aqui</Link></p>
         </form>
       </Card>
     </Container>

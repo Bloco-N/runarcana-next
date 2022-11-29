@@ -60,12 +60,12 @@ export default function SignIn() {
     <Container>
       {error ? <ErrorModal message={error.message} /> : ''}
       <Card>
-        <h2>Codex</h2>
+        <h2>Códice</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input {...register('username', { required: true })} placeholder="Invocador" />
           <Input {...register('password', { required: true })} placeholder="Senha" type="password" />
           <Button>Entrar</Button>
-          <p>Ainda não possui um codex?  <Link href='/sign-up'>Crie o seu aqui</Link></p>
+          <p>Ainda não possui um códice?  <Link href='/sign-up'>Crie o seu aqui</Link></p>
         </form>
       </Card>
     </Container>

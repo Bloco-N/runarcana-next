@@ -65,7 +65,7 @@ export default function CreateCharacter() {
   return (
     <Container>
       <div className="c-container">
-        <h1>Inserindo dados no codex</h1>
+        <h1>Inserindo dados no códice</h1>
         <CharacterSubmitContext.Provider value={[characterSubmit, setCharacterSubmit]}>
           <InputsWrapper currentInput={currentInput} />
           <Button className='prev' onClick={handlePrevious}>anterior</Button>
