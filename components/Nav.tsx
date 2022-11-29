@@ -61,11 +61,11 @@ const Nav = () => {
       </Link>
       {user ? (
         <button onClick={handleSignOut}>
-          Sign-out
+          Sair
         </button>
       ) : (
         <Link href='/sign-in'>
-          Sign-in
+          Entrar
         </Link>
       )}
       {user ? <span>{user.username} ({user.nickname})</span> : ''}
