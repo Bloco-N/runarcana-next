@@ -39,7 +39,7 @@ export default function About() {
       <h2>O Códice</h2>
 
       <p>
-        Na realidade eu não quero que você fique pensando nos detalhes técnicos que a existência dessa ferramenta exigiram. Você provavelmente não é um desenvolvedor e isso não ia te acressentar em nada. Quero que você pense que se estivéssemos no mundo de runeterra, esse site da internet seria um artefato mágico que concede ao portador a possibilidade de viver memórias de heróis em qualquer realidade de runeterra. O que levaria gerações de estudo em mágia e muito poder acumulado se torna uma simples consulta quando você tem esse artefato em mãos.
+        Na realidade eu não quero que você fique pensando nos detalhes técnicos que a existência dessa ferramenta exigiram. Você provavelmente não é um desenvolvedor e isso não ia te acressentar em nada. Quero que você pense que se estivéssemos no mundo de runeterra, esse site da internet seria um artefato mágico que concede ao portador a possibilidade de viver memórias de heróis em qualquer realidade de runeterra. O que levaria gerações de estudo em magia e muito poder acumulado se torna uma simples consulta quando você tem esse artefato em mãos.
       </p>
 
       <p>
