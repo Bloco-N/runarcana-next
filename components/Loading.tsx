@@ -1,8 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import useDarkTheme from '../hooks/useDarkTheme';
 
-const Container = styled.div`
-  background-color: #000000b5;
+type ContainerProps = {
+  isDark: boolean
+}
+
+const Container = styled.div<ContainerProps>`
+  background-color: ${props => props.isDark ? '#000000b5' : '#a3a3a3b5'} ;
   position: absolute;
   z-index: 3;
   display: flex;
@@ -11,6 +16,7 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
   opacity: 0.7;
+  margin-top: -5.7%;
   .lds-default {
   display: inline-block;
   position: relative;
@@ -88,8 +94,9 @@ const Container = styled.div`
 `
 
 const Loading = () => {
+  const isDark = useDarkTheme()
   return (
-    <Container>
+    <Container isDark={isDark}>
       <div className="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     </Container>
   );

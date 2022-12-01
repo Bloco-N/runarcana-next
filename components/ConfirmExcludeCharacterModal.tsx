@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React, { Dispatch, SetStateAction } from 'react';
 import styled from 'styled-components';
 import { DELETE_CHARACTER } from "../gql/mutations";
+import useDarkTheme from "../hooks/useDarkTheme";
 import Button from './Button';
 import Card from './Card';
 
@@ -11,8 +12,12 @@ type ConfirmModalProps = {
   characterId: number
 }
 
-const Container = styled.div`
-  background-color: #000000b5;
+type ContainerProps = {
+  isDark: boolean
+}
+
+const Container = styled.div<ContainerProps>`
+  background-color: ${props => props.isDark ? '#000000b5' : '#a3a3a3b5'} ;
   position: absolute;
   z-index: 3;
   display: flex;
@@ -20,11 +25,7 @@ const Container = styled.div`
   justify-content: center;
   height: 100%;
   width: 100%;
-  margin-top: -5.4%;
-  >div{
-    background-color: var(--secondary);
-    color: var(--primary);
-  }
+  margin-top: -5.7%;
   .content{
     display: flex;
     flex-direction: column;
@@ -39,6 +40,7 @@ const Container = styled.div`
 `
 
 const ConfirmExcludeCharacterModal = (props: ConfirmModalProps) => {
+  const isDark = useDarkTheme()
   const router = useRouter()
   const [mutateFunction] = useMutation(DELETE_CHARACTER, { errorPolicy: 'all' })
   const handleDelete = () => {
@@ -58,7 +60,7 @@ const ConfirmExcludeCharacterModal = (props: ConfirmModalProps) => {
     router.reload()
   }
   return (
-    <Container>
+    <Container isDark={isDark}>
       <Card className='content'>
         <h2>Deseja realmente excluir esse personagem do codex?</h2>
         <div className="buttons">
