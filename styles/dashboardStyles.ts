@@ -86,7 +86,7 @@ const Container = styled.div`
           width: 6rem;
           text-align: center;
           clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-          background-color: rgba(76, 76, 76, 0.25);
+          background-color: rgba(205, 214, 244, 0.25);
           backdrop-filter: blur(0.2rem);
           font-size: 3rem;
           ::-webkit-inner-spin-button{
@@ -99,7 +99,7 @@ const Container = styled.div`
           height: 4rem;
           width: 4rem;
           clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-          background-color: rgba(76, 76, 76, 0.25);
+          background-color: rgba(205, 214, 244, 0.25);
           backdrop-filter: blur(0.2rem);
           display: flex;
           align-items: center;
@@ -132,7 +132,7 @@ const Container = styled.div`
             align-items: center;
             justify-content: center;
             clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-            background-color: rgba(76, 76, 76, 0.25);
+            background-color: rgba(205, 214, 244, 0.25);
             backdrop-filter: blur(0.2rem);
         }
       }
@@ -151,7 +151,7 @@ const Container = styled.div`
       .life-count{
         font-family: 'Underdog', cursive;
         clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-        background-color: rgba(76, 76, 76, 0.25);
+        background-color: rgba(205, 214, 244, 0.25);
         backdrop-filter: blur(0.2rem);
         display: flex;
         align-items: center;
@@ -182,7 +182,7 @@ const Container = styled.div`
         height: 6rem;
         width: 6rem;
         clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-        background-color: rgba(76, 76, 76, 0.25);
+        background-color: rgba(205, 214, 244, 0.25);
         backdrop-filter: blur(0.2rem);
         ::-webkit-inner-spin-button{
           -webkit-appearance: none;
@@ -198,7 +198,7 @@ const Container = styled.div`
         height: 6rem;
         width: 6rem;
         clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-        background-color: rgba(76, 76, 76, 0.25);
+        background-color: rgba(205, 214, 244, 0.25);
         backdrop-filter: blur(0.2rem);
         ::-webkit-inner-spin-button{
           -webkit-appearance: none;
@@ -226,7 +226,7 @@ const Container = styled.div`
         align-items: center;
         justify-content: center;
         clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-        background-color: rgba(76, 76, 76, 0.25);
+        background-color: rgba(205, 214, 244, 0.25) ;
         backdrop-filter: blur(0.2rem);
       }
       .wrapper-bonus{
@@ -242,7 +242,7 @@ const Container = styled.div`
           width: 4rem;
           text-align: center;
           clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-          background-color: rgba(76, 76, 76, 0.25);
+          background-color: rgba(205, 214, 244, 0.25);
           backdrop-filter: blur(0.2rem);
           ::-webkit-inner-spin-button{
             -webkit-appearance: none;
@@ -326,7 +326,7 @@ const Container = styled.div`
               align-items: center;
               justify-content: center;
               clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-              background-color: rgba(76, 76, 76, 0.25);
+              background-color: rgba(205, 214, 244, 0.25);
               backdrop-filter: blur(0.2rem);
               font-size: 3rem;
           }
@@ -350,7 +350,7 @@ const Container = styled.div`
         width: 4rem;
         text-align: center;
         clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-        background-color: rgba(76, 76, 76, 0.25);
+        background-color: rgba(205, 214, 244, 0.25);
         backdrop-filter: blur(0.2rem);
         ::-webkit-inner-spin-button{
           -webkit-appearance: none;
@@ -379,7 +379,7 @@ const Container = styled.div`
         align-items: center;
         justify-content: center;
         clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-        background-color: rgba(76, 76, 76, 0.25);
+        background-color: rgba(205, 214, 244, 0.25);
         backdrop-filter: blur(0.2rem);
     }
     input{
@@ -391,7 +391,7 @@ const Container = styled.div`
         width: 8rem;
         text-align: center;
         clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-        background-color: rgba(76, 76, 76, 0.25);
+        background-color: rgba(205, 214, 244, 0.25);
         backdrop-filter: blur(0.2rem);
         font-size: 4rem;
         ::-webkit-inner-spin-button{
