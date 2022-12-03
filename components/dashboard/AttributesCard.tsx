@@ -142,7 +142,7 @@ const AttributesCard = ({ character, modifiers, attributes, skillsValues, setAtt
           <p>iniciativa</p>
         </div>
         <div>
-          <div className="attribute-value">{modifiers.dexterity}</div>
+          <div className="attribute-value">{character?.baseSpeed}</div>
           <p>deslocamento</p>
         </div>
         <div>

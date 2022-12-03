@@ -11,6 +11,7 @@
   --balloon-text-color: var(--secondary);
   --balloon-border-radius: 1rem;
   --balloon-move: 4px;
+  --gradient: linear-gradient(45deg, var(--gradient-color-one) 0%, var(--gradient-color-two) 100%)
 }
 
 * {
@@ -145,7 +146,7 @@ a:hover {
 
 
 .gradient {
-  background: linear-gradient(45deg, var(--gradient-color-one) 0%, var(--gradient-color-two) 100%);
+  background: var(--gradient);
   background-size: 400%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -165,10 +166,10 @@ a:hover {
 
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
-* {
-  scrollbar-width: 1rem;
-  scrollbar-color: var(--secondary) transparent;
-}
+// * {
+//   scrollbar-width: 1rem;
+//   scrollbar-color: var(--secondary) transparent;
+// }
 
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
@@ -180,7 +181,7 @@ a:hover {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--secondary);
+  background: var(--secondary);
   border-radius: 1rem;
   border: 1rem solid transparent;
 }

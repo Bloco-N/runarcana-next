@@ -3,7 +3,7 @@ import styled from "styled-components"
 const Container = styled.div`
   width: 1450px;
   padding: 4rem;
-  height: 80%;
+  height: 1200px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(8, 11rem);
@@ -398,6 +398,60 @@ const Container = styled.div`
             -webkit-appearance: none;
             margin: 0;
         }
+    }
+  }
+  .characteristics-card{
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 7;
+    grid-row-end: 10;
+    display: flex;
+    gap: 4rem;
+    padding-top: 7rem;
+    .title{
+      position: absolute;
+      top: 1rem;
+      left: 35%;
+    }
+    .menu-wrapper{
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      height: 30rem;
+      overflow-y: scroll;
+      scroll-behavior: initial;
+      padding: 1rem;
+    }
+    .content-wrapper{
+      padding: 2rem;
+      background-color: var(--secondary);
+      color: var(--primary);
+      border-radius: 1rem;
+      width: 50%;
+      ul{
+        margin-top: 1rem;
+        height: 24rem;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        text-transform: lowercase;
+        list-style: none;
+        border-radius: 1rem;
+        ::-webkit-scrollbar-thumb {
+          background: var(--primary);
+          border-radius: 1rem;
+          border: 1rem solid transparent;
+        }
+        li{
+          font-size: 1.5rem;
+          background-color: var(--primary);
+          color: var(--secondary);
+          padding: 1rem;
+          border-radius: 1rem;
+        }
+      }
     }
   }
 

@@ -13,6 +13,7 @@ import SavingThrowCard from '../../components/dashboard/SavingThrowCard';
 import RegionCard from '../../components/dashboard/RegionCard';
 import MoneyCard from '../../components/dashboard/MoneyCard';
 import ProficiencyCard from '../../components/dashboard/ProficiencyCard';
+import CharacteristicsCard from '../../components/dashboard/CharacteristicsCard';
 
 export default function CharacterDashBoard() {
   const router = useRouter()
@@ -135,6 +136,9 @@ export default function CharacterDashBoard() {
       />
       <MoneyCard />
       <ProficiencyCard
+        character={character as Character}
+      />
+      <CharacteristicsCard
         character={character as Character}
       />
     </Container>

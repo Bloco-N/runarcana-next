@@ -82,6 +82,11 @@ const USER_CHARACTER_DASHBOARD = gql`
             name
           }
         }
+        Characteristics {
+          name
+          info
+        }
+        baseSpeed
       }
     }
   }

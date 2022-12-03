@@ -4,6 +4,11 @@ type RunarcanaClass = {
   }
 }
 
+type Characteristic = {
+  name: string
+  info: string[]
+}
+
 export const SkillsAttributesMap = {
   acrobatics: 'dexterity',
   arcana: 'intelligence',
@@ -145,6 +150,8 @@ export type Character = {
   wisdomSavingThrow: string
   charismaSavingThrow: string
   CharacterRunarcanaClasses: RunarcanaClass[]
+  Characteristics: Characteristic[]
+  baseSpeed: number
 }
 
 type UserCharacterDashboard = {
